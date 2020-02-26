@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const movieRoute = require("./movies");
+const alertRoute = require("./alerts");
 
 // movie routes
-router.use("/movies", movieRoute);
+router.use("/alerts", alertRoute);
 
 module.exports = router;
