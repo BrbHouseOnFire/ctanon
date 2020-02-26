@@ -4,7 +4,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { ColorInput, CategoryInput, FileInput, Input, TextArea, FormBtn } from "../components/Form";
 
 function Alerts() {
   // Setting our component's initial state
@@ -57,18 +57,19 @@ function Alerts() {
       <Container fluid>
         <Row>
           <Col size="md-6">
-            
+            <h1 className="">Tell Chicago what's happening.</h1>
             <form>
-              <Input
+              <ColorInput
                 onChange={handleInputChange}
                 name="title"
-                placeholder="Title (required)"
+                placeholder="Title"
               />
-              <Input
+              <CategoryInput
                 onChange={handleInputChange}
                 name="author"
                 placeholder="Author (required)"
               />
+              <FileInput />
               <TextArea
                 onChange={handleInputChange}
                 name="synopsis"
