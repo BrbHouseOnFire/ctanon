@@ -19,11 +19,9 @@ function Detail(props) {
       <Container fluid>
         <Row>
           <Col size="md-12">
-            <Jumbotron>
               <h1>
                 {alert.title} by {alert.author}
               </h1>
-            </Jumbotron>
           </Col>
         </Row>
         <Row>
