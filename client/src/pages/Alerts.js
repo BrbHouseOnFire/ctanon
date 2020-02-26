@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from "react";
 import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
-function Books() {
+function Alerts() {
   // Setting our component's initial state
-  const [books, setBooks] = useState([])
+  const [alerts, setAlerts] = useState([])
   const [formObject, setFormObject] = useState({})
 
-  // Load all books and store them with setBooks
+  // Load all alerts and store them with setAlerts
   useEffect(() => {
-    loadBooks()
+    loadAlerts()
   }, [])
 
-  // Loads all books and sets them to books
-  function loadBooks() {
-    API.getBooks()
+  // Loads all alerts and sets them to alerts
+  function loadAlerts() {
+    API.getAlerts()
       .then(res => 
-        setBooks(res.data)
+        setAlerts(res.data)
       )
       .catch(err => console.log(err));
   };
 
-  // Deletes a book from the database with a given id, then reloads books from the db
-  function deleteBook(id) {
-    API.deleteBook(id)
-      .then(res => loadBooks())
+  // Deletes a alert from the database with a given id, then reloads alerts from the db
+  function deleteAlert(id) {
+    API.deleteAlert(id)
+      .then(res => loadAlerts())
       .catch(err => console.log(err));
   }
 
@@ -44,12 +43,12 @@ function Books() {
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.title && formObject.author) {
-      API.saveBook({
+      API.saveAlert({
         title: formObject.title,
         author: formObject.author,
         synopsis: formObject.synopsis
       })
-        .then(res => loadBooks())
+        .then(res => loadAlerts())
         .catch(err => console.log(err));
     }
   };
@@ -58,9 +57,7 @@ function Books() {
       <Container fluid>
         <Row>
           <Col size="md-6">
-            <Jumbotron>
-              <h1>What Books Should I Read?</h1>
-            </Jumbotron>
+            
             <form>
               <Input
                 onChange={handleInputChange}
@@ -81,24 +78,22 @@ function Books() {
                 disabled={!(formObject.author && formObject.title)}
                 onClick={handleFormSubmit}
               >
-                Submit Book
+                Submit Alert
               </FormBtn>
             </form>
           </Col>
           <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Books On My List</h1>
-            </Jumbotron>
-            {books.length ? (
+            
+            {alerts.length ? (
               <List>
-                {books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
+                {alerts.map(alert => (
+                  <ListItem key={alert._id}>
+                    <Link to={"/alerts/" + alert._id}>
                       <strong>
-                        {book.title} by {book.author}
+                        {alert.title} by {alert.author}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => deleteBook(book._id)} />
+                    <DeleteBtn onClick={() => deleteAlert(alert._id)} />
                   </ListItem>
                 ))}
               </List>
@@ -112,4 +107,4 @@ function Books() {
   }
 
 
-export default Books;
+export default Alerts;
