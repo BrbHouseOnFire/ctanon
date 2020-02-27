@@ -1,6 +1,6 @@
 const db = require('../models');
 module.exports = {
-    //find all movies
+    //find all alerts
     findAll: function(req, res) {
         db.alert
             .find({})

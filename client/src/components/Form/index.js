@@ -12,46 +12,47 @@ export function Input(props) {
 
 export function ColorInput(props) {
   return (
-    <select id="title" className="form-control">
-      <option className="" id=""  {...props} value="" disabled selected>Line Color</option>
-      <option className="" id=""  {...props} value="Red">Red</option>
-      <option className="" id=""  {...props} value="Orange">Orange</option>
-      <option className="" id=""  {...props} value="Yellow">Yellow</option>
-      <option className="" id=""  {...props} value="Green">Green</option>
-      <option className="" id=""  {...props} value="Blue">Blue</option>
-      <option className="" id=""  {...props} value="Purple">Purple</option>
-      <option className="" id=""  {...props} value="Pink">Pink</option>
-      <option className="" id=""  {...props} value="Brown">Brown</option>
+    <select id="color" className="form-control">
+        <option value="DEFAULT" disabled>Choose Rail line Color...</option>
+      <option {...props} id="redOpt" value="Red">Red</option>
+      <option {...props} id="orgOpt" value="Orange">Orange</option>
+      <option {...props} id="ylwOpt" value="Yellow">Yellow</option>
+      <option {...props} id="grnOpt" value="Green">Green</option>
+      <option {...props} id="bluOpt" value="Blue">Blue</option>
+      <option {...props} id="prpOpt" value="Purple">Purple</option>
+      <option {...props} id="pnkOpt" value="Pink">Pink</option>
+      <option {...props} id="brnOpt" value="Brown">Brown</option>
     </select>
   );
 }
 
 export function CategoryInput(props) {
   return (
-    <select id="author" className="form-control">
-      <option className="" id=""  {...props} value="" disabled selected>Incident Category</option>
+    <select id="category" className="form-control">
+        <option value="DEFAULT" disabled>Choose an Incident Category...</option>
       <option className="" id=""  {...props} value="Thing">Thing</option>
       <option className="" id=""  {...props} value="Bad Guy">Bad Guy</option>
       <option className="" id=""  {...props} value="Jabroni">Jabroni</option>
       <option className="" id=""  {...props} value="Shenanigans">Shenanigans</option>
       <option className="" id=""  {...props} value="John Wayne Gacy's Ghost">John Wayne Gacy's Ghost</option>
+      <option className="" id=""  {...props} value="Other">Other</option>
     </select>
   );
 }
 
-export function FileInput(props) {
-  return (
-    <div className="form-group">
-      <input type="file" class="form-control-file"  id="file" {...props}/>
-      <label for="file">FILE PICKER BROKEN DO NOT TOUCH</label>
-    </div>
-  )
-};
+// export function FileInput(props) {
+//   return (
+//     <div className="form-group">
+//       <input type="file" class="form-control-file"  id="file" {...props}/>
+//     </div>
+//   )
+// };
+// add FileInput to imports in Alert.js in pages folder
 
 export function TextArea(props) {
   return (
-    <div className="form-group">
-      <textarea className="form-control" rows="20" {...props} />
+    <div id="description" className="form-group">
+      <textarea className="form-control" rows="10" {...props} />
     </div>
   );
 }
