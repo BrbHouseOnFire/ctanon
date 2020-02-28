@@ -12,35 +12,35 @@ export function Input(props) {
 
 export function ColorInput(props) {
   return (
-    <select defaultValue="default" id="line" className="form-control" >
-        <option value="default">Choose Rail line Color...</option>
-      <option {...props} id="Red" value="Red">Red</option>
-      <option {...props} id="Blue" value="Blue">Blue</option>
-      <option {...props} id="Brn" value="Brn">Brown</option>
-      <option {...props} id="G" value="G">Green</option>
-      <option {...props} id="Org" value="Org">Orange</option>
-      <option {...props} id="P" value="P">Purple</option>
-      <option {...props} id="Pexp" value="Pexp">Purple Express</option>
-      <option {...props} id="Pink" value="Pink">Pink</option>
-      <option {...props} id="Y" value="Y">Yellow</option>
+    <select {...props} defaultValue="default" id="line" className="form-control" >
+      <option value="default">Choose Rail line Color...</option>
+      <option id="Red" value="Red">Red</option>
+      <option id="Blue" value="Blue">Blue</option>
+      <option id="Brn" value="Brn">Brown</option>
+      <option id="G" value="G">Green</option>
+      <option id="Org" value="Org">Orange</option>
+      <option id="P" value="P">Purple</option>
+      <option id="Pexp" value="Pexp">Purple Express</option>
+      <option id="Pink" value="Pink">Pink</option>
+      <option id="Y" value="Y">Yellow</option>
     </select>
   );
 }
 
 export function CategoryInput(props) {
   return (
-    <select defaultValue="default" id="category" className="form-control">
+    <select {...props} defaultValue="default" id="category" className="form-control">
         <option value="default" > Choose an Incident Category...</option>
-      <option className="" id=""  {...props} value="threat">Verbal or physical threat(s)</option>
-      <option className="" id=""  {...props} value="inappTouch">Inappropriate touching</option>
-      <option className="" id=""  {...props} value="indExp">Indecent exposure</option>
-      <option className="" id=""  {...props} value="sexAdv">Sexual advances</option>
-      <option className="" id=""  {...props} value="inappPic">Inappropriate photographing/filming</option>
-      <option className="" id=""  {...props} value="tooClose">Unwelcomed physical proximity</option>
-      <option className="" id=""  {...props} value="comment">Inappropriate or sexual comments</option>
-      <option className="" id=""  {...props} value="obsGest">Obscene gestures</option>
-      <option className="" id=""  {...props} value="John Wayne Gacy's Ghost">John Wayne Gacy's Ghost</option>
-      <option className="" id=""  {...props} value="Other">Other</option>
+      <option className="" id="" value="threat">Verbal or physical threat(s)</option>
+      <option className="" id="" value="inappTouch">Inappropriate touching</option>
+      <option className="" id="" value="indExp">Indecent exposure</option>
+      <option className="" id="" value="sexAdv">Sexual advances</option>
+      <option className="" id="" value="inappPic">Inappropriate photographing/filming</option>
+      <option className="" id="" value="tooClose">Unwelcomed physical proximity</option>
+      <option className="" id="" value="comment">Inappropriate or sexual comments</option>
+      <option className="" id="" value="obsGest">Obscene gestures</option>
+      <option className="" id="" value="John Wayne Gacy's Ghost">John Wayne Gacy's Ghost</option>
+      <option className="" id="" value="Other">Other</option>
     </select>
   );
 }
@@ -58,8 +58,8 @@ export function CategoryInput(props) {
 
 export function TextArea(props) {
   return (
-    <div name="description" id="description" className="form-group">
-      <textarea className="form-control" rows="3" maxLength="140" spellCheck="default" {...props} />
+    <div name="description" className="form-group">
+      <textarea className="form-control" id="description" rows="3" maxLength="140" spellCheck="default" {...props} />
     </div>
   );
 }
@@ -67,7 +67,7 @@ export function TextArea(props) {
 export function FormBtn(props) {
   return (
     <>
-    <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
+    <button {...props} type="submit" style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
       {props.children}
       
     </button>

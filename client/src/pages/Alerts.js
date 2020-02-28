@@ -9,7 +9,9 @@ import { ColorInput, CategoryInput, Input, TextArea, FormBtn } from "../componen
 function Alerts() {
   // Setting our component's initial state
   const [alerts, setAlerts] = useState([])
-  const [formObject, setFormObject] = useState({})
+  const [line, setLine] = useState('');
+  const [category, setCategory] = useState('');
+  const [desc, setDesc] = useState('');
 
   // Load all alerts and store them with setAlerts
   useEffect(() => {
@@ -32,26 +34,24 @@ function Alerts() {
       .catch(err => console.log(err));
   }
 
-  // Handles updating component state when the user types into the input field
-  function handleInputChange(event) {
-    const { name, value } = event.target;
-    setFormObject({ ...formObject, [name]: value })
-  };
 
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
   function handleFormSubmit(event) {
     // console.log(formObject.line.value)
-    console.log("click!");
+    console.log("form click works!!");
+    console.log(line);
+    console.log(category);
+    console.log(desc);
 
     event.preventDefault();
     //if (formObject.color && formObject.category) { i took this out to prevent requiring data -DDD
     API.saveAlert({
-      line: formObject.line,
-      category: formObject.category,
-      description: formObject.description,
-      votes: formObject.description,
-      date: formObject.date
+      line: line,
+      category: category,
+      description: desc,
+      votes: 0,
+      date: 'hi'
     })
       .then(res => loadAlerts())
       .catch(err => console.log(err));
@@ -63,27 +63,27 @@ function Alerts() {
       <Row classInfo="row">
         <Col classInfo="col-md-6">
           <h1 className="">Tell Chicago what's happening.</h1>
-          <form>
+
+          <form onSubmit={handleFormSubmit}>
             <ColorInput
               name="line"
-              onChange={handleInputChange}
+              onChange={() => setLine(document.getElementById("line").value)}
             />
+
             <CategoryInput
               name="category"
-              onChange={handleInputChange}
+              onChange={() => setCategory(document.getElementById("category").value)}
             />
-            {/* <FileInput /> */}
+
             <TextArea
               name="description"
-              onChange={handleInputChange}
               placeholder="Describe what's going on here. Max 140 characters."
+              onChange={() => setDesc(document.getElementById("description").value)}
             />
-            <FormBtn
-              // disabled={!(formObject.category && formObject.color)} also taken out for requirement purposes for now -DDD
-              onClick={handleFormSubmit}
-            >
+
+            <FormBtn>
               Submit Alert
-              </FormBtn>
+            </FormBtn>
           </form>
         </Col>
         <Col classInfo="col-md-6">
