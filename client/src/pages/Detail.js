@@ -20,7 +20,7 @@ function Detail(props) {
         <Row>
           <Col size="md-12">
               <h1>
-                {alert.color} by {alert.category}
+                {alert.line} by {alert.category}
               </h1>
           </Col>
         </Row>

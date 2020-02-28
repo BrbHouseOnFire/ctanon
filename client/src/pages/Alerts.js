@@ -44,10 +44,11 @@ function Alerts() {
     event.preventDefault();
     //if (formObject.color && formObject.category) { i took this out to prevent requiring data -DDD
     API.saveAlert({
-      color: formObject.color,
+      line: formObject.line,
       category: formObject.category,
       description: formObject.description,
-      //date: formObject.date thought we might need this here? -DDD
+      votes: formObject.description,
+      date: formObject.date
     })
       .then(res => loadAlerts())
       .catch(err => console.log(err));

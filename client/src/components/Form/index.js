@@ -12,16 +12,17 @@ export function Input(props) {
 
 export function ColorInput(props) {
   return (
-    <select id="color" className="form-control">
+    <select id="line" className="form-control">
         <option value="DEFAULT" disabled>Choose Rail line Color...</option>
-      <option {...props} id="redOpt" value="Red">Red</option>
-      <option {...props} id="orgOpt" value="Orange">Orange</option>
-      <option {...props} id="ylwOpt" value="Yellow">Yellow</option>
-      <option {...props} id="grnOpt" value="Green">Green</option>
-      <option {...props} id="bluOpt" value="Blue">Blue</option>
-      <option {...props} id="prpOpt" value="Purple">Purple</option>
-      <option {...props} id="pnkOpt" value="Pink">Pink</option>
-      <option {...props} id="brnOpt" value="Brown">Brown</option>
+      <option {...props} id="Red" value="Red">Red</option>
+      <option {...props} id="Blue" value="Blue">Blue</option>
+      <option {...props} id="Brn" value="Brown">Brown</option>
+      <option {...props} id="G" value="Green">Green</option>
+      <option {...props} id="Org" value="Orange">Orange</option>
+      <option {...props} id="P" value="Purple">Purple</option>
+      <option {...props} id="Pexp" value="Purple Express">Purple Express</option>
+      <option {...props} id="Pink" value="Pink">Pink</option>
+      <option {...props} id="Y" value="Yellow">Yellow</option>
     </select>
   );
 }
@@ -51,7 +52,7 @@ export function CategoryInput(props) {
 
 export function TextArea(props) {
   return (
-    <div id="description" className="form-group">
+    <div name="description" id="description" className="form-group">
       <textarea className="form-control" rows="10" {...props} />
     </div>
   );
