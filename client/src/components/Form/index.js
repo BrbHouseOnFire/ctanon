@@ -12,8 +12,8 @@ export function Input(props) {
 
 export function ColorInput(props) {
   return (
-    <select id="line" className="form-control" >
-        <option selected disabled>Choose Rail line Color...</option>
+    <select defaultValue="default" id="line" className="form-control" >
+        <option value="default">Choose Rail line Color...</option>
       <option {...props} id="Red" value="Red">Red</option>
       <option {...props} id="Blue" value="Blue">Blue</option>
       <option {...props} id="Brn" value="Brn">Brown</option>
@@ -29,8 +29,8 @@ export function ColorInput(props) {
 
 export function CategoryInput(props) {
   return (
-    <select id="category" className="form-control">
-        <option selected value="DEFAULT" disabled>Choose an Incident Category...</option>
+    <select defaultValue="default" id="category" className="form-control">
+        <option value="default" > Choose an Incident Category...</option>
       <option className="" id=""  {...props} value="threat">Verbal or physical threat(s)</option>
       <option className="" id=""  {...props} value="inappTouch">Inappropriate touching</option>
       <option className="" id=""  {...props} value="indExp">Indecent exposure</option>
