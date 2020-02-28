@@ -14,15 +14,15 @@ export function ColorInput(props) {
   return (
     <select {...props} defaultValue="default" id="line" className="form-control" >
       <option value="default">Choose Rail line Color...</option>
-      <option id="Red" value="Red">Red</option>
-      <option id="Blue" value="Blue">Blue</option>
-      <option id="Brn" value="Brn">Brown</option>
-      <option id="G" value="G">Green</option>
-      <option id="Org" value="Org">Orange</option>
-      <option id="P" value="P">Purple</option>
-      <option id="Pexp" value="Pexp">Purple Express</option>
-      <option id="Pink" value="Pink">Pink</option>
-      <option id="Y" value="Y">Yellow</option>
+      <option id="Red" data-val="Red">Red</option>
+      <option id="Blue" data-val="Blue">Blue</option>
+      <option id="Brn" data-val="Brn">Brown</option>
+      <option id="G" data-val="G">Green</option>
+      <option id="Org" data-val="Org">Orange</option>
+      <option id="P" data-val="P">Purple</option>
+      <option id="Pexp" data-val="Pexp">Purple Express</option>
+      <option id="Pink" data-val="Pink">Pink</option>
+      <option id="Y" data-val="Y">Yellow</option>
     </select>
   );
 }
@@ -31,16 +31,16 @@ export function CategoryInput(props) {
   return (
     <select {...props} defaultValue="default" id="category" className="form-control">
         <option value="default" > Choose an Incident Category...</option>
-      <option className="" id="" value="threat">Verbal or physical threat(s)</option>
-      <option className="" id="" value="inappTouch">Inappropriate touching</option>
-      <option className="" id="" value="indExp">Indecent exposure</option>
-      <option className="" id="" value="sexAdv">Sexual advances</option>
-      <option className="" id="" value="inappPic">Inappropriate photographing/filming</option>
-      <option className="" id="" value="tooClose">Unwelcomed physical proximity</option>
-      <option className="" id="" value="comment">Inappropriate or sexual comments</option>
-      <option className="" id="" value="obsGest">Obscene gestures</option>
-      <option className="" id="" value="John Wayne Gacy's Ghost">John Wayne Gacy's Ghost</option>
-      <option className="" id="" value="Other">Other</option>
+      <option className="" id="" data-val="threat">Verbal or physical threat(s)</option>
+      <option className="" id="" data-val="inappTouch">Inappropriate touching</option>
+      <option className="" id="" data-val="indExp">Indecent exposure</option>
+      <option className="" id="" data-val="sexAdv">Sexual advances</option>
+      <option className="" id="" data-val="inappPic">Inappropriate photographing/filming</option>
+      <option className="" id="" data-val="tooClose">Unwelcomed physical proximity</option>
+      <option className="" id="" data-val="comment">Inappropriate or sexual comments</option>
+      <option className="" id="" data-val="obsGest">Obscene gestures</option>
+      <option className="" id="" data-val="John Wayne Gacy's Ghost">John Wayne Gacy's Ghost</option>
+      <option className="" id="" data-val="Other">Other</option>
     </select>
   );
 }
