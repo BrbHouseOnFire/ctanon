@@ -10,10 +10,56 @@ export function Input(props) {
   );
 }
 
+export function ColorInput(props) {
+  return (
+    <select id="line" className="form-control" >
+        <option selected disabled>Choose Rail line Color...</option>
+      <option {...props} id="Red" value="Red">Red</option>
+      <option {...props} id="Blue" value="Blue">Blue</option>
+      <option {...props} id="Brn" value="Brn">Brown</option>
+      <option {...props} id="G" value="G">Green</option>
+      <option {...props} id="Org" value="Org">Orange</option>
+      <option {...props} id="P" value="P">Purple</option>
+      <option {...props} id="Pexp" value="Pexp">Purple Express</option>
+      <option {...props} id="Pink" value="Pink">Pink</option>
+      <option {...props} id="Y" value="Y">Yellow</option>
+    </select>
+  );
+}
+
+export function CategoryInput(props) {
+  return (
+    <select id="category" className="form-control">
+        <option selected value="DEFAULT" disabled>Choose an Incident Category...</option>
+      <option className="" id=""  {...props} value="threat">Verbal or physical threat(s)</option>
+      <option className="" id=""  {...props} value="inappTouch">Inappropriate touching</option>
+      <option className="" id=""  {...props} value="indExp">Indecent exposure</option>
+      <option className="" id=""  {...props} value="sexAdv">Sexual advances</option>
+      <option className="" id=""  {...props} value="inappPic">Inappropriate photographing/filming</option>
+      <option className="" id=""  {...props} value="tooClose">Unwelcomed physical proximity</option>
+      <option className="" id=""  {...props} value="comment">Inappropriate or sexual comments</option>
+      <option className="" id=""  {...props} value="obsGest">Obscene gestures</option>
+      <option className="" id=""  {...props} value="John Wayne Gacy's Ghost">John Wayne Gacy's Ghost</option>
+      <option className="" id=""  {...props} value="Other">Other</option>
+    </select>
+  );
+}
+
+
+
+// export function FileInput(props) {
+//   return (
+//     <div className="form-group">
+//       <input type="file" class="form-control-file"  id="file" {...props}/>
+//     </div>
+//   )
+// };
+// add FileInput to imports in Alert.js in pages folder
+
 export function TextArea(props) {
   return (
-    <div className="form-group">
-      <textarea className="form-control" rows="20" {...props} />
+    <div name="description" id="description" className="form-group">
+      <textarea className="form-control" rows="3" maxLength="140" spellCheck="default" {...props} />
     </div>
   );
 }

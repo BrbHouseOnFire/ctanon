@@ -8,19 +8,28 @@ mongoose.connect(
   "mongodb://localhost/ctanondb"
 );
 
-const alertSeed = [
-  {
-    transit: "red line",
-    synopsis: "person puked on the red line northbound",
-    date: new Date(Date.now())
-  },
-  {
-    transit: "blue line",
-    synopsis: "super loud jazz at the chicago stop",
-    date: new Date(Date.now())
-  },
 
-];
+const alertSeed = 
+
+[
+  {
+    line: "Red",
+    category: "Jabroni",
+    description: "This numbskull is playing 2 chains 2 loud at Clark/Division",
+    votes: 5,
+    date: new Date(Date.now())
+  },
+  {
+    line: "Blue",
+    category: "John Wayne Gacy's Ghost",
+    description: "I'm like 99% I just saw him at Diversey",
+    votes: 122,
+    date: new Date(Date.now())
+  }
+]
+
+
+
 
 db.Alert
   .remove({})
@@ -33,3 +42,7 @@ db.Alert
     console.error(err);
     process.exit(1);
   });
+
+
+
+

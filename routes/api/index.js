@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const alertRoute = require("./alerts");
 
-// movie routes
+// alert routes
+
 router.use("/alerts", alertRoute);
 
 module.exports = router;

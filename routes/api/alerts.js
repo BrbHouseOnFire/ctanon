@@ -1,12 +1,14 @@
 const router = require('express').Router();
-const alertsController = require('../../controllers/alertController');
-// match with /api/alerts
+
+const alertController = require('./../../controllers/alertController');
+// match with /api/alert
 router.route('/')
-    .get(alertsController.findAll)
-    .post(alertsController.create);
+    .get(alertController.findAll)
+    .post(alertController.create);
     
 router.route('/:id')
-    .get(alertsController.findById)
-    .put(alertsController.update)
-    .delete(alertsController.delete)
+    .get(alertController.findById)
+    .put(alertController.update)
+    .delete(alertController.delete)
+
 module.exports = router;

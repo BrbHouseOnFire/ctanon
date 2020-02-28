@@ -20,23 +20,23 @@ function Detail(props) {
         <Row>
           <Col size="md-12">
               <h1>
-                {alert.title} by {alert.author}
+                {alert.line} by {alert.category}
               </h1>
           </Col>
         </Row>
         <Row>
           <Col size="md-10 md-offset-1">
             <article>
-              <h1>Synopsis</h1>
+              <h1>Description</h1>
               <p>
-                {alert.synopsis}
+                {alert.description}
               </p>
             </article>
           </Col>
         </Row>
         <Row>
           <Col size="md-2">
-            <Link to="/">← Back to Authors</Link>
+            <Link to="/">← Back</Link>
           </Col>
         </Row>
       </Container>
