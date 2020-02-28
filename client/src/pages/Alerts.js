@@ -41,7 +41,9 @@ function Alerts() {
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
   function handleFormSubmit(event) {
-    console.log('in for sub')
+    // console.log(formObject.line.value)
+    console.log("click!");
+
     event.preventDefault();
     //if (formObject.color && formObject.category) { i took this out to prevent requiring data -DDD
     API.saveAlert({
@@ -57,9 +59,9 @@ function Alerts() {
   };
 
   return (
-    <Container fluid>
-      <Row>
-        <Col size="md-6">
+    <Container>
+      <Row classInfo="row">
+        <Col classInfo="col-md-6">
           <h1 className="">Tell Chicago what's happening.</h1>
           <form>
             <ColorInput
@@ -84,7 +86,7 @@ function Alerts() {
               </FormBtn>
           </form>
         </Col>
-        <Col size="md-6 sm-12">
+        <Col classInfo="col-md-6">
           {alerts.length ? (
             <List>
               {alerts.map(alert => (
