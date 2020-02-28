@@ -41,6 +41,7 @@ function Alerts() {
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
   function handleFormSubmit(event) {
+    console.log('in for sub')
     event.preventDefault();
     //if (formObject.color && formObject.category) { i took this out to prevent requiring data -DDD
     API.saveAlert({
@@ -62,7 +63,7 @@ function Alerts() {
           <h1 className="">Tell Chicago what's happening.</h1>
           <form>
             <ColorInput
-              name="color"
+              name="line"
               onChange={handleInputChange}
             />
             <CategoryInput
@@ -73,7 +74,7 @@ function Alerts() {
             <TextArea
               name="description"
               onChange={handleInputChange}
-              placeholder="Describe what's going on here."
+              placeholder="Describe what's going on here. Max 140 characters."
             />
             <FormBtn
               // disabled={!(formObject.category && formObject.color)} also taken out for requirement purposes for now -DDD
@@ -90,7 +91,7 @@ function Alerts() {
                 <ListItem key={alert._id}>
                   <Link to={"/alerts/" + alert._id}>
                     <strong>
-                      {alert.color} by {alert.category}
+                      {alert.line} - {alert.category}
                     </strong>
                   </Link>
                   <DeleteBtn onClick={() => deleteAlert(alert._id)} />
