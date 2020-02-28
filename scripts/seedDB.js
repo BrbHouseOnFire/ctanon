@@ -8,6 +8,7 @@ mongoose.connect(
   "mongodb://localhost/ctanondb"
 );
 
+
 const alertSeed = 
 
 [
@@ -29,6 +30,7 @@ const alertSeed =
 
 
 
+
 db.Alert
   .remove({})
   .then(() => db.Alert.collection.insertMany(alertSeed))
@@ -43,15 +45,4 @@ db.Alert
 
 
 
-
-// manual seed instructions - 
-// in  shell (not mongod) type mongo 
-//type use ctanondb, enter
-// type db.alerts.insert(  <-- leave the parenth open, do not press enter
-// un comment parenth at bottom of this page, leave red error alone 
-//copy whole array and parenth
-//right click next to open parenth in shell, script will run,
-// you should see a bulk writr message, BulkWriteResult with 16 records or so
-//type db.alerts.find().pretty() shoudl give you it all in a good format. re comment parenth at bottom
-        
 
