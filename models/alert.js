@@ -9,6 +9,7 @@ const alertSchema = new Schema({
   date: { type: Date, required: false }
 })
 
+
 const Alert = mongoose.model("Alert", alertSchema);
 
 module.exports = Alert;
