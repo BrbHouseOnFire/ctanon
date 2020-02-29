@@ -10,9 +10,7 @@ import "../assets/alerts.css"
 function Alerts() {
   // Setting our component's initial state
   const [alerts, setAlerts] = useState([])
-  // const [line, setLine] = useState('');
-  // const [category, setCategory] = useState('');
-  // const [desc, setDesc] = useState('');
+  const [filteredAlerts, setFilteredAlerts] = useState([])
 
   // Load all alerts and store them with setAlerts
   useEffect(() => {
@@ -22,11 +20,26 @@ function Alerts() {
   // Loads all alerts and sets them to alerts
   function loadAlerts() {
     API.getAlerts()
-      .then(res =>
-        setAlerts(res.data)
+      .then(res => {
+          setAlerts(res.data);
+          setFilteredAlerts(res.data);
+        }
       )
       .catch(err => console.log(err));
   };
+
+  function filterLine(color) {
+    if (color === "") {
+      return setFilteredAlerts(alerts);
+    } else {
+      let filter = alerts.filter(function(res) {
+      return res.line === color;
+      });
+      console.log(filter)
+      setFilteredAlerts(filter);
+    };
+  };
+
 
   // // Deletes a alert from the database with a given id, then reloads alerts from the db
   // function deleteAlert(id) {
@@ -62,10 +75,22 @@ function Alerts() {
   return (
     <Container>
       <Row classInfo=" row">
-        <Col classInfo=" col-md-6">
+        <select id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value)}>
+          <option id="all" value="">All Lines</option>
+          <option id="Red" data-val="Red">Red</option>
+          <option id="Blue" data-val="Blue">Blue</option>
+          <option id="Brn" data-val="Brn">Brown</option>
+          <option id="G" data-val="G">Green</option>
+          <option id="Org" data-val="Org">Orange</option>
+          <option id="P" data-val="P">Purple</option>
+          <option id="Pexp" data-val="Pexp">Purple Express</option>
+          <option id="Pink" data-val="Pink">Pink</option>
+          <option id="Y" data-val="Y">Yellow</option>
+        </select>
+        <Col classInfo=" col-md-8">
           {alerts.length ? (
             <List>
-              {alerts.map(alert => (
+              {filteredAlerts.map(alert => (
                 <ListItem key={alert._id}>
 
                   <Row >
