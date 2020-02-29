@@ -91,6 +91,86 @@ const alertSeed =
     votes: 69,
     cleared: 0,
     date: new Date(Date.now())
+  },
+  {
+    line: "Yellow",
+    category: "Police Activity",
+    description: "Massive bank heist occured and they hopped on the train. Police is frisking everyone >:[",
+    votes: 20,
+    cleared: 0,
+    date: new Date(Date.now())
+  },
+  {
+    line: "Yellow",
+    category: "Passenger Incident",
+    description: "Someone got trampled at the Howard stop",
+    votes: 15,
+    cleared: 0,
+    date: new Date(Date.now())
+  },
+  {
+    line: "Yellow",
+    category: "Delayed Train",
+    description: "At the skokie stop and trains like 20 mins late :/",
+    votes: 2,
+    cleared: 0,
+    date: new Date(Date.now())
+  },
+  {
+    line: "Pink",
+    category: "Obscene gestures",
+    description: "got the bird from a homeless guy at the kedzie stop",
+    votes: -5,
+    cleared: 0,
+    date: new Date(Date.now())
+  },
+  {
+    line: "Purple Express",
+    category: "Inappropriate or sexual comments",
+    description: "bunch of high schoolers cat calling while going to the beach",
+    votes: 5,
+    cleared: 0,
+    date: new Date(Date.now())
+  },
+  {
+    line: "Purple Express",
+    category: "Unwelcomed physical proximity",
+    description: "classic purple line completely packed during rush hour. smells like pits out here.",
+    votes: 52,
+    cleared: 0,
+    date: new Date(Date.now())
+  },
+  {
+    line: "Purple",
+    category: "Inappropriate photographing/filming",
+    description: "some kid took their parents phone and is going around taking pictures of everyone.",
+    votes: -2,
+    cleared: 0,
+    date: new Date(Date.now())
+  },
+  {
+    line: "Purple",
+    category: "Sexual advances",
+    description: "middle of the afternoon and a homeless guy is blackout hitting on everyone in this train.",
+    votes: 22,
+    cleared: 0,
+    date: new Date(Date.now())
+  },
+  {
+    line: "Orange",
+    category: "Indecent exposure",
+    description: "kids these day on the way to their beach are showing wayy too much ankle.",
+    votes: 1,
+    cleared: 0,
+    date: new Date(Date.now())
+  },
+  {
+    line: "Orange",
+    category: "Police Activity",
+    description: "not sure whats going down at midway but the all trains to midway have stopped.",
+    votes: 22,
+    cleared: 0,
+    date: new Date(Date.now())
   }
 ]
 
