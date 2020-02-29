@@ -38,7 +38,7 @@ export function CategoryInput(props) {
       <option className="" id="" data-val="inAppPic">Inappropriate photographing/filming</option>
       <option className="" id="" data-val="tooClose">Unwelcomed physical proximity</option>
       <option className="" id="" data-val="comment">Inappropriate or sexual comments</option>
-      <option className="" id="" data-val="SusAct">Suspicious Activity</option>
+      <option className="" id="" data-val="susAct">Suspicious Activity</option>
       <option className="" id="" data-val="obsGest">Obscene gestures</option>
       <option className="" id="" data-val="delayTrain">Delayed Train</option>
       <option className="" id="" data-val="passInc">Passenger Incident</option>
