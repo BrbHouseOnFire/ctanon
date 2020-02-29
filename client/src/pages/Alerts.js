@@ -61,8 +61,7 @@ function Alerts() {
 
   return (
     <Container>
-      <Row classInfo=" row">
-        <Col classInfo=" col-md-6">
+      <Row >
           {alerts.length ? (
             <List>
               {alerts.map(alert => (
@@ -111,16 +110,12 @@ function Alerts() {
                       <DeleteBtn onClick={() => deleteAlert(alert._id)} />
                     </Col> */}
                   </Row>
-                    {/* <strong>
-                      {alert.line} - {alert.category}
-                    </strong> */}
                 </ListItem>
               ))}
             </List>
           ) : (
               <h3>Nothing currently happening.</h3>
             )}
-        </Col>
       </Row>
     </Container>
   );
