@@ -87,7 +87,7 @@ function Alerts() {
           <option id="Pink" data-val="Pink">Pink</option>
           <option id="Y" data-val="Y">Yellow</option>
         </select>
-        <Col classInfo=" col-md-8">
+      <Col classInfo=" col-md-8">
       <Row >
           {alerts.length ? (
             <List>
@@ -143,6 +143,8 @@ function Alerts() {
           ) : (
               <h3>Nothing currently happening.</h3>
             )}
+      </Row>
+      </Col>
       </Row>
     </Container>
   );
