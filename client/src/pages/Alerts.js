@@ -88,6 +88,7 @@ function Alerts() {
           <option id="Y" data-val="Y">Yellow</option>
         </select>
         <Col classInfo=" col-md-8">
+      <Row >
           {alerts.length ? (
             <List>
               {filteredAlerts.map(alert => (
@@ -136,16 +137,12 @@ function Alerts() {
                       <DeleteBtn onClick={() => deleteAlert(alert._id)} />
                     </Col> */}
                   </Row>
-                    {/* <strong>
-                      {alert.line} - {alert.category}
-                    </strong> */}
                 </ListItem>
               ))}
             </List>
           ) : (
               <h3>Nothing currently happening.</h3>
             )}
-        </Col>
       </Row>
     </Container>
   );
