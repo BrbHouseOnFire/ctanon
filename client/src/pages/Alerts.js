@@ -74,7 +74,6 @@ function Alerts() {
 
   return (
     <Container>
-      <Row classInfo=" row">
         <select id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value)}>
           <option id="all" value="">All Lines</option>
           <option id="Red" data-val="Red">Red</option>
@@ -87,7 +86,6 @@ function Alerts() {
           <option id="Pink" data-val="Pink">Pink</option>
           <option id="Y" data-val="Y">Yellow</option>
         </select>
-        <Col classInfo=" col-md-8">
       <Row >
           {alerts.length ? (
             <List>
