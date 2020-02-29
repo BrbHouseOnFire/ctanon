@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
@@ -6,7 +7,8 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { ColorInput, CategoryInput, Input, TextArea, FormBtn } from "../components/Form";
 
-function Alerts() {
+
+function Submit() {
   // Setting our component's initial state
   const [alerts, setAlerts] = useState([])
   const [line, setLine] = useState('');
@@ -59,30 +61,36 @@ function Alerts() {
   };
 
   return (
-  <Container>
-    <Row>
+    <Container>
+      <Row classInfo="row">
         <Col classInfo="col-md-6">
-          {alerts.length ? (
-            <List>
-              {alerts.map(alert => (
-                <ListItem key={alert._id}>
-                  <Link to={"/alerts/" + alert._id}>
-                    <strong>
-                      {alert.line} - {alert.category}
-                    </strong>
-                  </Link>
-                  <DeleteBtn onClick={() => deleteAlert(alert._id)} />
-                </ListItem>
-              ))}
-            </List>
-          ) : (
-              <h3>Nothing currently happening.</h3>
-            )}
+          <h1 className="">Tell Chicago what's happening.</h1>
+
+          <form onSubmit={handleFormSubmit}>
+            <ColorInput
+              name="line"
+              onChange={() => setLine(document.getElementById("line").value)}
+            />
+
+            <CategoryInput
+              name="category"
+              onChange={() => setCategory(document.getElementById("category").value)}
+            />
+
+            <TextArea
+              name="description"
+              placeholder="Describe what's going on here. Max 140 characters."
+              onChange={() => setDesc(document.getElementById("description").value)}
+            />
+
+            <FormBtn>
+              Submit Alert
+            </FormBtn>
+          </form>
         </Col>
       </Row>
     </Container>
-  );
+  )
 }
 
-
-export default Alerts;
+export default Submit;

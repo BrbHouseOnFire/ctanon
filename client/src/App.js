@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Alerts from "./pages/Alerts";
 import Detail from "./pages/Detail";
+import Submit from "./pages/Submit";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 
@@ -16,6 +17,9 @@ function App() {
           </Route>
           <Route exact path="/alerts/:id">
             <Detail />
+          </Route>
+          <Route exact path="/submit">
+            <Submit />
           </Route>
           <Route>
             <NoMatch />
