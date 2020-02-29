@@ -32,13 +32,17 @@ export function CategoryInput(props) {
     <select {...props} defaultValue="default" id="category" className="form-control">
         <option value="default" > Choose an Incident Category...</option>
       <option className="" id="" data-val="threat">Verbal or physical threat(s)</option>
-      <option className="" id="" data-val="inappTouch">Inappropriate touching</option>
+      <option className="" id="" data-val="inAppTouch">Inappropriate touching</option>
       <option className="" id="" data-val="indExp">Indecent exposure</option>
       <option className="" id="" data-val="sexAdv">Sexual advances</option>
-      <option className="" id="" data-val="inappPic">Inappropriate photographing/filming</option>
+      <option className="" id="" data-val="inAppPic">Inappropriate photographing/filming</option>
       <option className="" id="" data-val="tooClose">Unwelcomed physical proximity</option>
       <option className="" id="" data-val="comment">Inappropriate or sexual comments</option>
+      <option className="" id="" data-val="SusAct">Suspicious Activity</option>
       <option className="" id="" data-val="obsGest">Obscene gestures</option>
+      <option className="" id="" data-val="delayTrain">Delayed Train</option>
+      <option className="" id="" data-val="passInc">Passenger Incident</option>
+      <option className="" id="" data-val="polAct">Police Activity</option>
       <option className="" id="" data-val="John Wayne Gacy's Ghost">John Wayne Gacy's Ghost</option>
       <option className="" id="" data-val="Other">Other</option>
     </select>
