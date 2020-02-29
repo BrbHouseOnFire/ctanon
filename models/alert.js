@@ -6,6 +6,7 @@ const alertSchema = new Schema({
   category: { type: String, required: false },
   description: { type: String, required: false },
   votes: { type: Number, required: false, default: 0 },
+  cleared: { type: Number, required: false, default: 0 },
   date: { type: String, required: false }
 })
 
