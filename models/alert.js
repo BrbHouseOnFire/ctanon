@@ -7,7 +7,7 @@ const alertSchema = new Schema({
   description: { type: String, required: false },
   votes: { type: Number, required: false, default: 0 },
   cleared: { type: Number, required: false, default: 0 },
-  date: { type: String, required: false }
+  date: { type: Date, required: false }
 })
 
 
