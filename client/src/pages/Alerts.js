@@ -3,11 +3,16 @@ import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
+import { VoteUp, VoteDn, Clear } from "../components/Thumbs"
+
 import { List, ListItem } from "../components/List";
 // import { ColorInput, CategoryInput, Input, TextArea, FormBtn } from "../components/Form";
 import "../assets/alerts.css"
 
 function Alerts() {
+
+  
+
   // Setting our component's initial state
   const [alerts, setAlerts] = useState([])
   const [filteredAlerts, setFilteredAlerts] = useState([])
@@ -21,9 +26,9 @@ function Alerts() {
   function loadAlerts() {
     API.getAlerts()
       .then(res => {
-          setAlerts(res.data);
-          setFilteredAlerts(res.data);
-        }
+        setAlerts(res.data);
+        setFilteredAlerts(res.data);
+      }
       )
       .catch(err => console.log(err));
   };
@@ -32,8 +37,8 @@ function Alerts() {
     if (color === "") {
       return setFilteredAlerts(alerts);
     } else {
-      let filter = alerts.filter(function(res) {
-      return res.line === color;
+      let filter = alerts.filter(function (res) {
+        return res.line === color;
       });
       console.log(filter)
       setFilteredAlerts(filter);
@@ -73,76 +78,103 @@ function Alerts() {
   // };
 
   return (
-    <Container>
-        <select id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value)}>
-          <option id="all" value="">All Lines</option>
-          <option id="Red" data-val="Red">Red</option>
-          <option id="Blue" data-val="Blue">Blue</option>
-          <option id="Brn" data-val="Brn">Brown</option>
-          <option id="G" data-val="G">Green</option>
-          <option id="Org" data-val="Org">Orange</option>
-          <option id="P" data-val="P">Purple</option>
-          <option id="Pexp" data-val="Pexp">Purple Express</option>
-          <option id="Pink" data-val="Pink">Pink</option>
-          <option id="Y" data-val="Y">Yellow</option>
-        </select>
-      <Row >
-          {alerts.length ? (
-            <List>
-              {filteredAlerts.map(alert => (
-                <ListItem key={alert._id}>
 
-                  <Row >
-                    <Col classInfo="-md-2">
+    <div className="d-flex flex-column justify-items-start m-5">
+
+      <h3 I className="text-right ml-5 mr-5 text-muted"><i>Filter by Line</i></h3>
+
+      <select className="mr-5 ml-5 mb-5" id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value)}>
+        <option className="lead" id="all" value="">All Lines</option>
+        <option className="lead" id="Red" data-val="Red">Red</option>
+        <option className="lead" id="Blue" data-val="Blue">Blue</option>
+        <option className="lead" id="Brn" data-val="Brn">Brown</option>
+        <option className="lead" id="G" data-val="G">Green</option>
+        <option className="lead" id="Org" data-val="Org">Orange</option>
+        <option className="lead" id="P" data-val="P">Purple</option>
+        <option className="lead" id="Pexp" data-val="Pexp">Purple Express</option>
+        <option className="lead" id="Pink" data-val="Pink">Pink</option>
+        <option className="lead" id="Y" data-val="Y">Yellow</option>
+      </select>
+
+      <h1 className="display-4 m-5 mb-5">Check out what's going on...</h1>
+
+      <Container>
+        <Row >
+          {alerts.length ? (
+            <List >
+
+              {filteredAlerts.map(alert => (
+                <ListItem className="d-flex justify-items-center"key={alert._id}>
+                  <Row>
+
+                    {/*  Line Color col */}
+                    <Col data-clr="clrBox" classInfo="-md-1">
                       <Link to={"/alerts/" + alert._id}>
                         {/* Line Color */}
                         {alert.line}
                       </Link>
                     </Col>
-                    <Col classInfo="-md-6">
-                        <Row >
-                          <Link to={"/alerts/" + alert._id}>
-                            {/* Details */}
-                            {alert.description}
-                          </Link>
-                        </Row>
+
+                    {/*  Content col */}
+                    <Col data-cnt="cntBox" classInfo="-md-10">
+                      
                       <Row >
-                        <Col classInfo="-md-5">
-                          {/* Upvotes */}
-                          {`Upvotes: ${alert.votes}`}
-                        </Col>
-                        <Col classInfo="-md-5">
-                          {/* Clear Marks */}
-                          {`${alert.votes} Users marked cleared`}
-                        </Col>
+                        <Link to={"/alerts/" + alert._id}>
+                          {/* Details */}
+                          {alert.description}
+                        </Link>
+                      </Row>
+
+                      <Row >
                         <Col classInfo="-md-2">
-                          {/* Cleared Button */}
-                          ClearButton
+                          {/* Upvotes */}
+                          {`Score: ${alert.votes}`}
                         </Col>
+                        <Col classInfo="">
+                          {/* Clear Marks */}
+                          <img alt="" src={require('./../assets/images/ctanonImages/exp.png')} ></img>
+                          {`x${alert.cleared}`}
+                        </Col>
+                        <Col classInfo="">
+                          {/* Clear Marks */}
+                          <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
+                          {`${alert.date
+                            .replace('T', ' @')
+                            .replace('Z', '')
+                            
+                            }`}
+                        </Col>
+                        
+                      </Row>
+
+                    </Col>
+
+                    {/* Votes and Clear Box */}
+                    <Col data-vot="votBox" classInfo="">
+                      <Row >
+                        <Clear />
+                        <VoteUp />
+                        <VoteDn />
                       </Row>
                     </Col>
-                    <Col classInfo="-md-3">
-                      <Row >
-                        ThumbUpButton
-                        {/* Thumb Up */}
-                      </Row>
-                      <Row >
-                        ThumbDownButton
-                        {/* Thumb Down */}
-                      </Row>
-                    </Col>
-                    {/* <Col classInfo="-md-1">
+
+                    {/* delete col, maybe for later */}
+                    {/* <Col classInfo="">
                       <DeleteBtn onClick={() => deleteAlert(alert._id)} />
                     </Col> */}
+
                   </Row>
                 </ListItem>
               ))}
             </List>
-          ) : (
+          )
+            :
+            (
               <h3>Nothing currently happening.</h3>
             )}
-      </Row>
-    </Container>
+        </Row>
+      </Container>
+    </div>
   );
 }
 
