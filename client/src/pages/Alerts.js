@@ -81,7 +81,7 @@ function Alerts() {
 
     <div className="d-flex flex-column justify-items-start m-5">
 
-      <h3 I className="text-right ml-5 mr-5 text-muted"><i>Filter by Line</i></h3>
+      <h3 className="text-right ml-5 mr-5 text-muted"><i>Filter by Line</i></h3>
 
       <select className="mr-5 ml-5 mb-5" id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value)}>
         <option className="lead" id="all" value="">All Lines</option>
