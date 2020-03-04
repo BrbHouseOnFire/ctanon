@@ -16,6 +16,7 @@ function Alerts() {
   // Setting our component's initial state
   const [alerts, setAlerts] = useState([])
   const [filteredAlerts, setFilteredAlerts] = useState([])
+  const [votes, setVotes] = useState({})
 
   // Load all alerts and store them with setAlerts
   useEffect(() => {
@@ -53,7 +54,9 @@ function Alerts() {
         let up = res.data.votes + 1;
         // console.log(`${up} <- new value for votes`);
         API.updateAlert(res.data._id, {votes: up})
-          .then(res => console.log(res))
+          .then(res => {console.log(res)
+            loadAlerts();
+          })
       });
   };
 
@@ -65,9 +68,11 @@ function Alerts() {
         let down = res.data.votes - 1;
         // console.log(`${up} <- new value for votes`);
         API.updateAlert(res.data._id, {votes: down})
-          .then(res => console.log(res.data.votes))
+          .then(res => {console.log(res)
+            loadAlerts();
+          })
       });
-//     setAlerts({...alerts, votes: down, });
+
   };
 
   function clear(value) {
