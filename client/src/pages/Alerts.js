@@ -51,10 +51,13 @@ function Alerts() {
     console.log(up);
   }
 
-  function downvote(value) {
+  function downvote(value, id) {
     // console.log(`${value} down`)
     let down = value - 1;
     console.log(down)
+
+    console.log(alerts);
+    setAlerts({...alerts, votes: down, });
   }
 
   function clear(value) {
@@ -168,9 +171,9 @@ function Alerts() {
                     {/* Votes and Clear Box */}
                     <Col data-vot="votBox" classInfo="">
                       <Row >
-                        <Clear  onClick={() => clear(alert.votes)}/>
-                        <VoteUp onClick={() => upvote(alert.votes)}/>
-                        <VoteDn onClick={() => downvote(alert.votes)}/>
+                        <Clear  onClick={() => clear(alert.votes, alert._id)}/>
+                        <VoteUp onClick={() => upvote(alert.votes, alert._id)}/>
+                        <VoteDn onClick={() => downvote(alert.votes, alert._id)}/>
                       </Row>
                     </Col>
 
