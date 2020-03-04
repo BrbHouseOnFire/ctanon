@@ -5,6 +5,9 @@ const alertController = require('./../../controllers/alertController');
 router.route('/')
     .get(alertController.findAll)
     
+router.route('/up')
+    .put(alertController.update)
+
 router.route('/:id')
     .get(alertController.findById)
     .delete(alertController.delete)

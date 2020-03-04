@@ -16,5 +16,8 @@ export default {
   // Saves a book to the database
   saveAlert: function(alertData) {
     return axios.post("/api/alerts", alertData);
+  },
+  upvote: function(alertData) {
+    return axios.post("/api/alerts/up", alertData);
   }
 };

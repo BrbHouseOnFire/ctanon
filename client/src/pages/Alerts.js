@@ -45,6 +45,22 @@ function Alerts() {
     };
   };
 
+  function upvote(value) {
+    // console.log(`${value} up`)
+    let up = value + 1;
+    console.log(up);
+  }
+
+  function downvote(value) {
+    // console.log(`${value} down`)
+    let down = value - 1;
+    console.log(down)
+  }
+
+  function clear(value) {
+    console.log(`${value} clear`)
+  }
+
 
   // // Deletes a alert from the database with a given id, then reloads alerts from the db
   // function deleteAlert(id) {
@@ -139,8 +155,8 @@ function Alerts() {
                           {/* Clear Marks */}
                           <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
                           {`${alert.date
-                            .replace('T', ' @')
-                            .replace('Z', '')
+                            // .replace('T', ' @')
+                            // .replace('Z', '')
                             
                             }`}
                         </Col>
@@ -152,9 +168,9 @@ function Alerts() {
                     {/* Votes and Clear Box */}
                     <Col data-vot="votBox" classInfo="">
                       <Row >
-                        <Clear />
-                        <VoteUp />
-                        <VoteDn />
+                        <Clear  onClick={() => clear(alert.votes)}/>
+                        <VoteUp onClick={() => upvote(alert.votes)}/>
+                        <VoteDn onClick={() => downvote(alert.votes)}/>
                       </Row>
                     </Col>
 
