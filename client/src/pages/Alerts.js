@@ -46,16 +46,28 @@ function Alerts() {
   };
 
   function upvote(value) {
-    // console.log(`${value} up`)
-    let up = value + 1;
-    console.log(up);
-  }
+    // console.log(value._id);
+    API.getAlert(value._id)
+      .then(res => {
+        // console.log(res.data.votes)
+        let up = res.data.votes + 1;
+        // console.log(`${up} <- new value for votes`);
+        API.updateAlert(res.data._id, {votes: up})
+          .then(res => console.log(res))
+      });
+  };
 
   function downvote(value) {
-    // console.log(`${value} down`)
-    let down = value - 1;
-    console.log(down)
-  }
+    // console.log(value._id);
+    API.getAlert(value._id)
+      .then(res => {
+        // console.log(res.data.votes)
+        let down = res.data.votes - 1;
+        // console.log(`${up} <- new value for votes`);
+        API.updateAlert(res.data._id, {votes: down})
+          .then(res => console.log(res.data.votes))
+      });
+  };
 
   function clear(value) {
     console.log(`${value} clear`)
@@ -168,9 +180,9 @@ function Alerts() {
                     {/* Votes and Clear Box */}
                     <Col data-vot="votBox" classInfo="">
                       <Row >
-                        <Clear  onClick={() => clear(alert.votes)}/>
-                        <VoteUp onClick={() => upvote(alert.votes)}/>
-                        <VoteDn onClick={() => downvote(alert.votes)}/>
+                        <Clear  onClick={() => clear(alert)}/>
+                        <VoteUp onClick={() => upvote(alert)}/>
+                        <VoteDn onClick={() => downvote(alert)}/>
                       </Row>
                     </Col>
 
