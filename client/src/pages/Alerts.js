@@ -67,6 +67,7 @@ function Alerts() {
         API.updateAlert(res.data._id, {votes: down})
           .then(res => console.log(res.data.votes))
       });
+//     setAlerts({...alerts, votes: down, });
   };
 
   function clear(value) {
