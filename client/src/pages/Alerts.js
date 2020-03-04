@@ -170,7 +170,7 @@ function Alerts() {
           )
             :
             (
-              <h3>Nothing currently happening.</h3>
+              <h3>Loading Results... Ein Moment Bitte!</h3>
             )}
         </Row>
       </Container>
