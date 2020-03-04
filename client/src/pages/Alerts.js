@@ -16,7 +16,6 @@ function Alerts() {
   // Setting our component's initial state
   const [alerts, setAlerts] = useState([])
   const [filteredAlerts, setFilteredAlerts] = useState([])
-  const [votes, setVotes] = useState({})
 
   // Load all alerts and store them with setAlerts
   useEffect(() => {
@@ -27,6 +26,8 @@ function Alerts() {
   function loadAlerts() {
     API.getAlerts()
       .then(res => {
+        console.log("res.data");
+        console.log(res.data);
         setAlerts(res.data);
         setFilteredAlerts(res.data);
       }
@@ -41,7 +42,9 @@ function Alerts() {
       let filter = alerts.filter(function (res) {
         return res.line === color;
       });
-      console.log(filter)
+      console.log("filter");
+      console.log(filter);
+      // WHY DOES SETTING THE STATE UPDATE THE PAGE HERE? ------------------------------------------
       setFilteredAlerts(filter);
     };
   };
@@ -54,7 +57,8 @@ function Alerts() {
         let up = res.data.votes + 1;
         // console.log(`${up} <- new value for votes`);
         API.updateAlert(res.data._id, {votes: up})
-          .then(res => {console.log(res)
+          .then(res => {
+            // console.log(res)
             loadAlerts();
           })
       });
@@ -62,16 +66,31 @@ function Alerts() {
 
   function downvote(value) {
     // console.log(value._id);
+    let filteredList = filteredAlerts;
+    console.log("filteredList");
+    console.log(filteredList);
+    for (let i=0;i<filteredList.length;i++) {
+      if (value._id === filteredList[i]._id) {
+        filteredList[i].votes -= 1;
+        console.log("HIT");
+        console.log(filteredList);
+        // AND YET, SETTING THE STATE DOES NOT UPDATE THE PAGE HERE? ------------------------------------------
+        setFilteredAlerts(filteredList);
+      };
+    };
+    // loadAlerts();
+
     API.getAlert(value._id)
       .then(res => {
         // console.log(res.data.votes)
         let down = res.data.votes - 1;
         // console.log(`${up} <- new value for votes`);
         API.updateAlert(res.data._id, {votes: down})
-          .then(res => {console.log(res)
-            loadAlerts();
+          .then(res => {
+            console.log("made a call")
+            // loadAlerts();
           })
-      });
+    });
 
   };
 
