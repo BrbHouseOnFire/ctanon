@@ -5,8 +5,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { ColorInput, CategoryInput, Input, TextArea, FormBtn } from "../components/Form";
-
+import { ColorInput, CategoryInput, Input, TextArea, FormBtn, FilterTrains } from "../components/Form";
 
 function Submit() {
   // Setting our component's initial state
@@ -19,6 +18,7 @@ function Submit() {
   useEffect(() => {
     loadAlerts()
   }, [])
+
 
   // Loads all alerts and sets them to alerts
   function loadAlerts() {
@@ -60,6 +60,12 @@ function Submit() {
     //}
   };
 
+  function handleTrainSubmit(event) {
+    event.preventDefault();
+    FilterTrains(line);
+  };
+
+
   return (
     <Container>
       <Row classInfo="row">
@@ -69,7 +75,7 @@ function Submit() {
           <form onSubmit={handleFormSubmit}>
             <ColorInput
               name="line"
-              onChange={() => setLine(document.getElementById("line").value)}
+              onChange={() => setLine(document.getElementById("line").value), handleTrainSubmit}
             />
 
             <CategoryInput

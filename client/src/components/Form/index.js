@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 // This file exports the Input, TextArea, and FormBtn components
 
@@ -27,6 +28,14 @@ export function ColorInput(props) {
   );
 }
 
+export function FilterTrains() {
+  axios.get(`http://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=f1e50ffc99634da4a135da024e8fc024&rt=red&outputType=JSON`)
+  .then(res => {
+    const trains = res.data;
+    console.log(trains);
+  })
+}
+
 export function CategoryInput(props) {
   return (
     <select {...props} defaultValue="default" id="category" className="form-control">
@@ -48,7 +57,6 @@ export function CategoryInput(props) {
     </select>
   );
 }
-
 
 
 // export function FileInput(props) {
