@@ -11,7 +11,7 @@ import "../assets/alerts.css"
 
 function Alerts() {
 
-  
+
 
   // Setting our component's initial state
   const [alerts, setAlerts] = useState([])
@@ -98,73 +98,57 @@ function Alerts() {
 
       <h1 className="display-4 m-5 mb-5">Check out what's going on...</h1>
 
-      <Container>
+      <Container className="">
         <Row >
           {alerts.length ? (
-            <List >
+            <List className="">
 
               {filteredAlerts.map(alert => (
-                <ListItem className="d-flex justify-items-center"key={alert._id}>
-                  <Row>
 
-                    {/*  Line Color col */}
-                    <Col data-clr="clrBox" classInfo="-md-1">
-                      <Link to={"/alerts/" + alert._id}>
-                        {/* Line Color */}
-                        {alert.line}
-                      </Link>
-                    </Col>
+                <ListItem  key={alert._id}>
+                  <Row className="d-flex justify-content-center">
+                  <Link to={"/alerts/" + alert._id}>
+                    {/* Line Color */}
+                    {alert.line}
+                  </Link>
 
-                    {/*  Content col */}
-                    <Col data-cnt="cntBox" classInfo="-md-10">
-                      
-                      <Row >
-                        <Link to={"/alerts/" + alert._id}>
-                          {/* Details */}
-                          {alert.description}
-                        </Link>
-                      </Row>
-
-                      <Row >
-                        <Col classInfo="-md-2">
-                          {/* Upvotes */}
-                          {`Score: ${alert.votes}`}
-                        </Col>
-                        <Col classInfo="">
-                          {/* Clear Marks */}
-                          <img alt="" src={require('./../assets/images/ctanonImages/exp.png')} ></img>
-                          {`x${alert.cleared}`}
-                        </Col>
-                        <Col classInfo="">
-                          {/* Clear Marks */}
-                          <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
-                          {`${alert.date
-                            .replace('T', ' @')
-                            .replace('Z', '')
-                            
-                            }`}
-                        </Col>
-                        
-                      </Row>
-
-                    </Col>
-
-                    {/* Votes and Clear Box */}
-                    <Col data-vot="votBox" classInfo="">
-                      <Row >
-                        <Clear />
-                        <VoteUp />
-                        <VoteDn />
-                      </Row>
-                    </Col>
+                  <Link to={"/alerts/" + alert._id}>
+                    {/* Details */}
+                    {alert.description}
+                  </Link>
+                    <div className="">
+                      {/* Upvotes */}
+                      {`Score: ${alert.votes}`}
+                    </div>
+                    <div className="">
+                      {/* Clear Marks */}
+                      <img alt="" src={require('./../assets/images/ctanonImages/exp.png')} ></img>
+                      {`x${alert.cleared}`}
+                    </div>
+                    
+                    <div className="">
+                      {/* Clear Marks */}
+                      <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
+                      {`${alert.date
+                        .replace('T', ' @')
+                        .replace('Z', '')
+                        }`}
+                    </div>
+                    
+                    <Clear />
+                    <VoteUp />
+                    <VoteDn />
 
                     {/* delete col, maybe for later */}
-                    {/* <Col classInfo="">
-                      <DeleteBtn onClick={() => deleteAlert(alert._id)} />
-                    </Col> */}
-
+                    {/* 
+                          <Col classInfo="">
+                            <DeleteBtn onClick={() => deleteAlert(alert._id)} />
+                          </Col> 
+                          
+                      */}
                   </Row>
                 </ListItem>
+
               ))}
             </List>
           )
