@@ -1,23 +1,24 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
+  // Gets all alerts
   getAlerts: function() {
     return axios.get("/api/alerts");
   },
-  // Gets the book with the given id
+  // Gets the alert with the given id
   getAlert: function(id) {
     return axios.get("/api/alerts/" + id);
   },
-  // Deletes the book with the given id
+  // Deletes the alert with the given id
   deleteAlert: function(id) {
     return axios.delete("/api/alerts/" + id);
   },
-  // Saves a book to the database
+  // Saves an alert to the database
   saveAlert: function(alertData) {
     return axios.post("/api/alerts", alertData);
   },
-  upvote: function(alertData) {
-    return axios.post("/api/alerts/up", alertData);
+  // Updates an alert with the given id
+  updateAlert: function(id, alertData) {
+    return axios.put("/api/alerts/" + id, alertData);
   }
 };
