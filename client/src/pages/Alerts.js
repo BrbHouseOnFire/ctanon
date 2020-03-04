@@ -50,6 +50,17 @@ function Alerts() {
   };
 
   function upvote(value) {
+    for (let i=0;i<filteredAlerts.length;i++) {
+      if (value._id === filteredAlerts[i]._id) {
+        let newVal = filteredAlerts[i].votes += 1;
+        // console.log(newVal)
+        let change = [...filteredAlerts, {votes: newVal}]
+        // console.log(change);
+        // console.log(update);
+        // AND YET, SETTING THE STATE DOES NOT UPDATE THE PAGE HERE? ------------------------------------------
+        setFilteredAlerts(change);
+      };
+    };
     // console.log(value._id);
     API.getAlert(value._id)
       .then(res => {
@@ -65,17 +76,15 @@ function Alerts() {
   };
 
   function downvote(value) {
-    // console.log(value._id);
-    let filteredList = filteredAlerts;
-    console.log("filteredList");
-    console.log(filteredList);
-    for (let i=0;i<filteredList.length;i++) {
-      if (value._id === filteredList[i]._id) {
-        filteredList[i].votes -= 1;
-        console.log("HIT");
-        console.log(filteredList);
+    for (let i=0;i<filteredAlerts.length;i++) {
+      if (value._id === filteredAlerts[i]._id) {
+        let newVal = filteredAlerts[i].votes -= 1;
+        // console.log(newVal)
+        let change = [...filteredAlerts, {votes: newVal}]
+        // console.log(change);
+        // console.log(update);
         // AND YET, SETTING THE STATE DOES NOT UPDATE THE PAGE HERE? ------------------------------------------
-        setFilteredAlerts(filteredList);
+        setFilteredAlerts(change);
       };
     };
     // loadAlerts();
