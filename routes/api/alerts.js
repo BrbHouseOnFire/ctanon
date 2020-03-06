@@ -5,8 +5,12 @@ const alertController = require('./../../controllers/alertController');
 router.route('/')
     .get(alertController.findAll)
     
+router.route('/up')
+    .put(alertController.update)
+
 router.route('/:id')
     .get(alertController.findById)
+    .put(alertController.update)
     .delete(alertController.delete)
 
 module.exports = router;

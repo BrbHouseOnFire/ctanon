@@ -23,6 +23,8 @@ function Alerts() {
   function loadAlerts() {
     API.getAlerts()
       .then(res => {
+        console.log("res.data");
+        console.log(res.data);
         setAlerts(res.data);
         setFilteredAlerts(res.data);
       }
@@ -38,10 +40,71 @@ function Alerts() {
       let filter = alerts.filter(function (res) {
         return res.line === color;
       });
-      console.log(filter)
+      console.log("filter");
+      console.log(filter);
+      // WHY DOES SETTING THE STATE UPDATE THE PAGE HERE? ------------------------------------------
       setFilteredAlerts(filter);
     };
   };
+
+
+  function upvote(value) {
+    for (let i=0;i<filteredAlerts.length;i++) {
+      if (value._id === filteredAlerts[i]._id) {
+        let newVal = filteredAlerts[i].votes += 1;
+        // console.log(newVal)
+        let change = [...filteredAlerts, {votes: newVal}]
+        // console.log(change);
+        // console.log(update);
+        // AND YET, SETTING THE STATE DOES NOT UPDATE THE PAGE HERE? ------------------------------------------
+        setFilteredAlerts(change);
+      };
+    };
+    // console.log(value._id);
+    API.getAlert(value._id)
+      .then(res => {
+        // console.log(res.data.votes)
+        let up = res.data.votes + 1;
+        // console.log(`${up} <- new value for votes`);
+        API.updateAlert(res.data._id, {votes: up})
+          .then(res => {
+            // console.log(res)
+            loadAlerts();
+          })
+      });
+  };
+
+  function downvote(value) {
+    for (let i=0;i<filteredAlerts.length;i++) {
+      if (value._id === filteredAlerts[i]._id) {
+        let newVal = filteredAlerts[i].votes -= 1;
+        // console.log(newVal)
+        let change = [...filteredAlerts, {votes: newVal}]
+        // console.log(change);
+        // console.log(update);
+        // AND YET, SETTING THE STATE DOES NOT UPDATE THE PAGE HERE? ------------------------------------------
+        setFilteredAlerts(change);
+      };
+    };
+    // loadAlerts();
+
+    API.getAlert(value._id)
+      .then(res => {
+        // console.log(res.data.votes)
+        let down = res.data.votes - 1;
+        // console.log(`${up} <- new value for votes`);
+        API.updateAlert(res.data._id, {votes: down})
+          .then(res => {
+            console.log("made a call")
+            // loadAlerts();
+          })
+    });
+
+  };
+
+  function clear(value) {
+    console.log(`${value} clear`)
+  }
 
   // // Deletes a alert from the database with a given id, then reloads alerts from the db
   // function deleteAlert(id) {
@@ -130,9 +193,9 @@ function Alerts() {
                         }`}
                     </div>
 
-                    <Clear />
-                    <VoteUp />
-                    <VoteDn />
+                    <Clear onClick={() => clear(alert)}/>
+                    <VoteUp onClick={() => upvote(alert)} />
+                    <VoteDn onClick={() => downvote(alert)}/>
 
                     {/* delete col, maybe for later */}
                     {/* 
@@ -149,7 +212,7 @@ function Alerts() {
           )
             :
             (
-              <h3>Nothing currently happening.</h3>
+              <h3>Loading Results... Ein Moment Bitte!</h3>
             )}
         </Row>
       </Container>
