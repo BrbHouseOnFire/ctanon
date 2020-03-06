@@ -49,6 +49,27 @@ function Alerts() {
     };
   };
 
+  function sorting(sortFunction) {
+    // console.log(sortFunction);
+    if (sortFunction === "Highest Rated") {
+      filteredAlerts.sort(function(a, b) {
+        return parseFloat(b.votes) - parseFloat(a.votes);
+      });
+      console.log(hiRating);
+      let hiRating = [...filteredAlerts];
+      setFilteredAlerts(hiRating);
+
+      // console.log(voted);
+      // console.log("this is high")
+    } else if (sortFunction === "Most Recent") {
+      // console.log("recent checking in")
+    } else {
+      // console.log("no sort applied");
+    }
+
+  }
+
+
   function upvote(value) {
     for (let i=0;i<filteredAlerts.length;i++) {
       if (value._id === filteredAlerts[i]._id) {
@@ -156,6 +177,12 @@ function Alerts() {
         <option className="lead" id="Pexp" data-val="Pexp">Purple Express</option>
         <option className="lead" id="Pink" data-val="Pink">Pink</option>
         <option className="lead" id="Y" data-val="Y">Yellow</option>
+      </select>
+
+      <select className="mr-5 ml-5 mb-5" id="sort" onChange={() => sorting(document.getElementById("sort").value)}>
+        <option className="lead" value="none"></option>
+        <option className="lead" data-val="hiRated">Highest Rated</option>
+        <option className="lead" data-val="mostRecent">Most Recent</option>
       </select>
 
       <h1 className="display-4 m-5 mb-5">Check out what's going on...</h1>
