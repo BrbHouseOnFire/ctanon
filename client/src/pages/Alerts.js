@@ -4,14 +4,13 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { VoteUp, VoteDn, Clear } from "../components/Thumbs"
-
 import { List, ListItem } from "../components/List";
+
 // import { ColorInput, CategoryInput, Input, TextArea, FormBtn } from "../components/Form";
-import "../assets/alerts.css"
+
+const moment = require("moment");
 
 function Alerts() {
-
-  
 
   // Setting our component's initial state
   const [alerts, setAlerts] = useState([])
@@ -26,8 +25,6 @@ function Alerts() {
   function loadAlerts() {
     API.getAlerts()
       .then(res => {
-        console.log("res.data");
-        console.log(res.data);
         setAlerts(res.data);
         setFilteredAlerts(res.data);
       }
@@ -42,64 +39,76 @@ function Alerts() {
       let filter = alerts.filter(function (res) {
         return res.line === color;
       });
-      console.log("filter");
-      console.log(filter);
-      // WHY DOES SETTING THE STATE UPDATE THE PAGE HERE? ------------------------------------------
       setFilteredAlerts(filter);
     };
   };
 
+  function sorting(sortFunction) {
+    if (sortFunction === "Highest Rated") {
+      console.log("high trigger")
+      filteredAlerts.sort(function(a, b) {
+        return parseFloat(b.votes) - parseFloat(a.votes);
+      });
+      let hiRating = [...filteredAlerts];
+      setFilteredAlerts(hiRating);
+      console.log(hiRating)
+
+    } else if (sortFunction === "Most Recent") {
+      console.log("recent Trigger")
+      filteredAlerts.sort(function(a, b) {
+        return parseFloat(a.dateTime) - parseFloat(b.dateTime);
+      })
+      let newDate = [...filteredAlerts]
+      setFilteredAlerts(newDate);
+    }
+
+  }
+
+
   function upvote(value) {
     for (let i=0;i<filteredAlerts.length;i++) {
       if (value._id === filteredAlerts[i]._id) {
-        filteredAlerts[i].votes += 1;
-        // console.log(newVal)
-        let change = [...filteredAlerts];
-        // console.log(change);
-        // console.log(update);
-        // AND YET, SETTING THE STATE DOES NOT UPDATE THE PAGE HERE? ------------------------------------------
-        setFilteredAlerts(change);
+        if (filteredAlerts[i].voted === false) {
+          filteredAlerts[i].votes += 1;
+          filteredAlerts[i].voted = true;
+          let change = [...filteredAlerts];
+
+          setFilteredAlerts(change);
+
+          API.getAlert(value._id)
+          .then(res => {
+            let up = res.data.votes + 1;
+            API.updateAlert(res.data._id, {votes: up})
+              .then(res => {
+              })
+          });
+        }
       };
     };
-    // console.log(value._id);
-    API.getAlert(value._id)
-      .then(res => {
-        // console.log(res.data.votes)
-        let up = res.data.votes + 1;
-        // console.log(`${up} <- new value for votes`);
-        API.updateAlert(res.data._id, {votes: up})
-          .then(res => {
-            // console.log(res)
-            // loadAlerts();
-          })
-      });
   };
 
   function downvote(value) {
     for (let i=0;i<filteredAlerts.length;i++) {
       if (value._id === filteredAlerts[i]._id) {
-        filteredAlerts[i].votes -= 1;
-        // console.log(newVal)
-        let change = [...filteredAlerts];
-        // console.log(change);
-        // console.log(update);
-        // AND YET, SETTING THE STATE DOES NOT UPDATE THE PAGE HERE? ------------------------------------------
-        setFilteredAlerts(change);
+        if (filteredAlerts[i].voted === false) {
+          filteredAlerts[i].votes -= 1;
+          filteredAlerts[i].voted = true;
+          let change = [...filteredAlerts];
+
+          setFilteredAlerts(change);
+
+          API.getAlert(value._id)
+          .then(res => {
+            let down = res.data.votes - 1;
+            API.updateAlert(res.data._id, {votes: down})
+              .then(res => {
+                
+              })
+          });
+        };
       };
     };
-    // loadAlerts();
 
-    API.getAlert(value._id)
-      .then(res => {
-        // console.log(res.data.votes)
-        let down = res.data.votes - 1;
-        // console.log(`${up} <- new value for votes`);
-        API.updateAlert(res.data._id, {votes: down})
-          .then(res => {
-            console.log("made a call")
-            // loadAlerts();
-          })
-    });
 
   };
 
@@ -158,6 +167,13 @@ function Alerts() {
         <option className="lead" id="Y" data-val="Y">Yellow</option>
       </select>
 
+      <h3 className="text-right ml-5 mr-5 text-muted"><i>Order By</i></h3>
+      <select className="mr-5 ml-5 mb-5" id="sort" onChange={() => sorting(document.getElementById("sort").value)}>
+      <option className="lead" data-val="mostRecent">Most Recent</option>
+        <option className="lead" data-val="hiRated">Highest Rated</option>
+
+      </select>
+
       <h1 className="display-4 m-5 mb-5">Check out what's going on...</h1>
 
       <Container>
@@ -173,7 +189,7 @@ function Alerts() {
                     <Col data-clr="clrBox" classInfo="-md-1">
                       <Link to={"/alerts/" + alert._id}>
                         {/* Line Color */}
-                        {alert.line}
+                        <div className={alert.line}>{'\u00A0 \u00A0 \u00A0'}</div>
                       </Link>
                     </Col>
 
@@ -200,11 +216,7 @@ function Alerts() {
                         <Col classInfo="">
                           {/* Clear Marks */}
                           <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
-                          {`${alert.date
-                            // .replace('T', ' @')
-                            // .replace('Z', '')
-                            
-                            }`}
+                          {moment(alert.dateTime, "YYYYMMDDHHmmss").fromNow()}
                         </Col>
                         
                       </Row>
