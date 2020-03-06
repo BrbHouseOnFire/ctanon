@@ -7,6 +7,7 @@ function Nav() {
       <a id="homeBtn" className="buttonEffect" href="/"> uCTAnon </a>
       <div className="p-2 text-primary">Unofficial CTA Anonymous Reporting</div>
       <a id="subBtn" className="buttonEffect" href="/submit">Submit Alert</a>
+      <a id="ctaBtn" className="buuttonEffect" href="/ctaAlerts">CTA Alerts</a>
       <a id="copBtn" className="buttonEffect" href="tel:911">CALL 911</a>
     </nav>
   );
