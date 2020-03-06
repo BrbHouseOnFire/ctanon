@@ -47,19 +47,21 @@ function Alerts() {
 
   function sorting(sortFunction) {
     if (sortFunction === "Highest Rated") {
-      console.group("high trigger")
+      console.log("high trigger")
       filteredAlerts.sort(function(a, b) {
         return parseFloat(b.votes) - parseFloat(a.votes);
       });
       let hiRating = [...filteredAlerts];
       setFilteredAlerts(hiRating);
+      console.log(hiRating)
 
     } else if (sortFunction === "Most Recent") {
       console.log("recent Trigger")
       filteredAlerts.sort(function(a, b) {
-        console.log(parseFloat(b.date))
-        return parseFloat(b.date) - parseFloat(a.date);
+        return parseFloat(a.dateTime) - parseFloat(b.dateTime);
       })
+      let newDate = [...filteredAlerts]
+      setFilteredAlerts(newDate);
     }
 
   }
