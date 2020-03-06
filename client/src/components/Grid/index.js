@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.css"
 
 // THIS IS A CONTAINER THAT SPANS THE WIDTH OF THE VIEWPORT //
 export function Container({ children }) {
@@ -10,14 +9,14 @@ export function Container({ children }) {
 export function Row({ classInfo, children }) {
   if (classInfo === undefined) {
     return (
-      <div className={`row w `}>
+      <div className={`row`}>
         {children}
       </div>
     );
   }
   else {
     return (
-      <div className={`row${classInfo} w `}>
+      <div className={`row${classInfo}`}>
         {children}
       </div>
     );
@@ -41,7 +40,3 @@ export function Col({ classInfo, children }) {
     );
   }
 };
-
-
-
-
