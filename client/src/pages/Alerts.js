@@ -52,9 +52,9 @@ function Alerts() {
   function upvote(value) {
     for (let i=0;i<filteredAlerts.length;i++) {
       if (value._id === filteredAlerts[i]._id) {
-        let newVal = filteredAlerts[i].votes += 1;
+        filteredAlerts[i].votes += 1;
         // console.log(newVal)
-        let change = [...filteredAlerts, {votes: newVal}]
+        let change = [...filteredAlerts];
         // console.log(change);
         // console.log(update);
         // AND YET, SETTING THE STATE DOES NOT UPDATE THE PAGE HERE? ------------------------------------------
@@ -70,7 +70,7 @@ function Alerts() {
         API.updateAlert(res.data._id, {votes: up})
           .then(res => {
             // console.log(res)
-            loadAlerts();
+            // loadAlerts();
           })
       });
   };
@@ -78,9 +78,9 @@ function Alerts() {
   function downvote(value) {
     for (let i=0;i<filteredAlerts.length;i++) {
       if (value._id === filteredAlerts[i]._id) {
-        let newVal = filteredAlerts[i].votes -= 1;
+        filteredAlerts[i].votes -= 1;
         // console.log(newVal)
-        let change = [...filteredAlerts, {votes: newVal}]
+        let change = [...filteredAlerts];
         // console.log(change);
         // console.log(update);
         // AND YET, SETTING THE STATE DOES NOT UPDATE THE PAGE HERE? ------------------------------------------
