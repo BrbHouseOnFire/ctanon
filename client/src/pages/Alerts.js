@@ -8,6 +8,7 @@ import { VoteUp, VoteDn, Clear } from "../components/Thumbs"
 import { List, ListItem } from "../components/List";
 // import { ColorInput, CategoryInput, Input, TextArea, FormBtn } from "../components/Form";
 import "../assets/alerts.css"
+const moment = require("moment");
 
 function Alerts() {
 
@@ -215,11 +216,7 @@ function Alerts() {
                         <Col classInfo="">
                           {/* Clear Marks */}
                           <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
-                          {`${alert.date
-                            // .replace('T', ' @')
-                            // .replace('Z', '')
-                            
-                            }`}
+                          {alert.dateTime}
                         </Col>
                         
                       </Row>
