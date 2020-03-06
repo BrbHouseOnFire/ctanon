@@ -53,6 +53,8 @@ function Submit() {
       category: category,
       description: desc,
       votes: 0,
+      voted: false,
+      hide: false,
       date: 'hi'
     })
       .then(res => loadAlerts())
