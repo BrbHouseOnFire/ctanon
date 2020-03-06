@@ -62,12 +62,7 @@ function Submit() {
     //}
   };
 
-  function handleTrainSubmit(event) {
-    event.preventDefault();
-    FilterTrains(line);
-  };
-
-
+  
   return (
     <Container>
       <Row classInfo="row">
@@ -77,7 +72,7 @@ function Submit() {
           <form onSubmit={handleFormSubmit}>
             <ColorInput
               name="line"
-              onChange={() => setLine(document.getElementById("line").value), handleTrainSubmit}
+              onChange={() => setLine(document.getElementById("line").value), FilterTrains}
             />
 
             <CategoryInput
