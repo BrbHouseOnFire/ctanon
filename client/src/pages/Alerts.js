@@ -57,8 +57,8 @@ function Alerts() {
     } else if (sortFunction === "Most Recent") {
       console.log("recent Trigger")
       filteredAlerts.sort(function(a, b) {
-        console.log(parseFloat(b.date))
-        return parseFloat(b.date) - parseFloat(a.date);
+        console.log(parseFloat(b.dateTime))
+        return parseFloat(b.dateTime) - parseFloat(a.dateTime);
       })
     }
 
