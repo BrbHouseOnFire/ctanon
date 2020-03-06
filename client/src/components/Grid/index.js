@@ -3,7 +3,7 @@ import "./style.css"
 
 // THIS IS A CONTAINER THAT SPANS THE WIDTH OF THE VIEWPORT //
 export function Container({ children }) {
-  return <div  className="container-fluid">{children}</div>;
+  return <div className="container-fluid">{children}</div>;
 }
 
 // THIS IS A BASIC ROW CALLOUT //
@@ -41,3 +41,7 @@ export function Col({ classInfo, children }) {
     );
   }
 };
+
+
+
+

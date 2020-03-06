@@ -18,7 +18,10 @@ const alertSeed =
     description: "I saw an ass crack at Harrison",
     votes: -4,
     cleared: 0,
-    date: new Date(Date.now())
+    date: new Date(Date.now()),
+    styles: {
+      backgroundColor: "red"
+    }
   },
   {
     line: "Blue",
@@ -188,7 +191,3 @@ db.Alert
     console.error(err);
     process.exit(1);
   });
-
-
-
-

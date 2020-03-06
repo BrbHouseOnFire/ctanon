@@ -1,4 +1,15 @@
+
 .w {
     max-width: 75vw;
     min-width: 75vw;
 }
+
+.Red {background-color: rgba(227, 25, 55);}
+.Blue {background-color: rgba(0, 157, 220);}
+.Brown {background-color: rgba(118, 66, 0);}
+.Green {background-color: rgba(0, 169, 79);}
+.Orange {background-color: rgba(224, 120, 54);}
+.Purple {background-color: rgba(73, 47, 146);}
+.Pink {background-color: rgba(243, 139, 185);}
+.Yellow {background-color: rgba(255, 232, 0);}
+.Grey {background-color: rgba(86, 90, 92);}
