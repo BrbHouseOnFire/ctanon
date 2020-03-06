@@ -25,8 +25,6 @@ function Alerts() {
   function loadAlerts() {
     API.getAlerts()
       .then(res => {
-        console.log("res.data");
-        console.log(res.data);
         setAlerts(res.data);
         setFilteredAlerts(res.data);
       }
@@ -41,64 +39,74 @@ function Alerts() {
       let filter = alerts.filter(function (res) {
         return res.line === color;
       });
-      console.log("filter");
-      console.log(filter);
-      // WHY DOES SETTING THE STATE UPDATE THE PAGE HERE? ------------------------------------------
       setFilteredAlerts(filter);
     };
   };
 
+  function sorting(sortFunction) {
+    if (sortFunction === "Highest Rated") {
+      console.group("high trigger")
+      filteredAlerts.sort(function(a, b) {
+        return parseFloat(b.votes) - parseFloat(a.votes);
+      });
+      let hiRating = [...filteredAlerts];
+      setFilteredAlerts(hiRating);
+
+    } else if (sortFunction === "Most Recent") {
+      console.log("recent Trigger")
+      filteredAlerts.sort(function(a, b) {
+        console.log(parseFloat(b.dateTime))
+        return parseFloat(b.dateTime) - parseFloat(a.dateTime);
+      })
+    }
+
+  }
+
+
   function upvote(value) {
     for (let i=0;i<filteredAlerts.length;i++) {
       if (value._id === filteredAlerts[i]._id) {
-        filteredAlerts[i].votes += 1;
-        // console.log(newVal)
-        let change = [...filteredAlerts];
-        // console.log(change);
-        // console.log(update);
-        // AND YET, SETTING THE STATE DOES NOT UPDATE THE PAGE HERE? ------------------------------------------
-        setFilteredAlerts(change);
+        if (filteredAlerts[i].voted === false) {
+          filteredAlerts[i].votes += 1;
+          filteredAlerts[i].voted = true;
+          let change = [...filteredAlerts];
+
+          setFilteredAlerts(change);
+
+          API.getAlert(value._id)
+          .then(res => {
+            let up = res.data.votes + 1;
+            API.updateAlert(res.data._id, {votes: up})
+              .then(res => {
+              })
+          });
+        }
       };
     };
-    // console.log(value._id);
-    API.getAlert(value._id)
-      .then(res => {
-        // console.log(res.data.votes)
-        let up = res.data.votes + 1;
-        // console.log(`${up} <- new value for votes`);
-        API.updateAlert(res.data._id, {votes: up})
-          .then(res => {
-            // console.log(res)
-            // loadAlerts();
-          })
-      });
   };
 
   function downvote(value) {
     for (let i=0;i<filteredAlerts.length;i++) {
       if (value._id === filteredAlerts[i]._id) {
-        filteredAlerts[i].votes -= 1;
-        // console.log(newVal)
-        let change = [...filteredAlerts];
-        // console.log(change);
-        // console.log(update);
-        // AND YET, SETTING THE STATE DOES NOT UPDATE THE PAGE HERE? ------------------------------------------
-        setFilteredAlerts(change);
+        if (filteredAlerts[i].voted === false) {
+          filteredAlerts[i].votes -= 1;
+          filteredAlerts[i].voted = true;
+          let change = [...filteredAlerts];
+
+          setFilteredAlerts(change);
+
+          API.getAlert(value._id)
+          .then(res => {
+            let down = res.data.votes - 1;
+            API.updateAlert(res.data._id, {votes: down})
+              .then(res => {
+                
+              })
+          });
+        };
       };
     };
-    // loadAlerts();
 
-    API.getAlert(value._id)
-      .then(res => {
-        // console.log(res.data.votes)
-        let down = res.data.votes - 1;
-        // console.log(`${up} <- new value for votes`);
-        API.updateAlert(res.data._id, {votes: down})
-          .then(res => {
-            console.log("made a call")
-            // loadAlerts();
-          })
-    });
 
   };
 
@@ -155,6 +163,13 @@ function Alerts() {
         <option className="lead" id="Pexp" data-val="Pexp">Purple Express</option>
         <option className="lead" id="Pink" data-val="Pink">Pink</option>
         <option className="lead" id="Y" data-val="Y">Yellow</option>
+      </select>
+
+      <h3 className="text-right ml-5 mr-5 text-muted"><i>Order By</i></h3>
+      <select className="mr-5 ml-5 mb-5" id="sort" onChange={() => sorting(document.getElementById("sort").value)}>
+      <option className="lead" data-val="mostRecent">Most Recent</option>
+        <option className="lead" data-val="hiRated">Highest Rated</option>
+
       </select>
 
       <h1 className="display-4 m-5 mb-5">Check out what's going on...</h1>

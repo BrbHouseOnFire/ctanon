@@ -1,5 +1,5 @@
 # CTAnon
-An anonymous notification board for the Chicago Transit Authority
+An unofficial anonymous notification board for the Chicago Transit Authority
 
 # User Story
 * As a regular rider of the Chicago Transit Authority (CTA) L train lines
