@@ -20,7 +20,8 @@ const alertSeed =
     votes: -4,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Blue",
@@ -29,7 +30,8 @@ const alertSeed =
     votes: 122,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Red",
@@ -38,7 +40,8 @@ const alertSeed =
     votes: 10,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Blue",
@@ -47,7 +50,8 @@ const alertSeed =
     votes: 1,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Purple Express",
@@ -56,7 +60,8 @@ const alertSeed =
     votes: -13,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Green",
@@ -65,7 +70,8 @@ const alertSeed =
     votes: 43,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Green",
@@ -74,7 +80,8 @@ const alertSeed =
     votes: 2,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Brown",
@@ -83,7 +90,8 @@ const alertSeed =
     votes: 7,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Brown",
@@ -92,7 +100,8 @@ const alertSeed =
     votes: 17,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Brown",
@@ -101,7 +110,8 @@ const alertSeed =
     votes: 69,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Yellow",
@@ -110,7 +120,8 @@ const alertSeed =
     votes: 20,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Yellow",
@@ -119,7 +130,8 @@ const alertSeed =
     votes: 15,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Yellow",
@@ -128,7 +140,8 @@ const alertSeed =
     votes: 2,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Pink",
@@ -137,7 +150,8 @@ const alertSeed =
     votes: -5,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Purple Express",
@@ -146,7 +160,8 @@ const alertSeed =
     votes: 5,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Purple Express",
@@ -155,7 +170,8 @@ const alertSeed =
     votes: 52,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Purple",
@@ -164,7 +180,8 @@ const alertSeed =
     votes: -2,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Purple",
@@ -173,7 +190,8 @@ const alertSeed =
     votes: 22,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Orange",
@@ -182,7 +200,8 @@ const alertSeed =
     votes: 1,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   },
   {
     line: "Orange",
@@ -191,7 +210,8 @@ const alertSeed =
     votes: 22,
     cleared: 0,
     dateTime: moment().format("YYYYMMDDHHmmss")
-
+    voted: false,
+    hidden: false
   }
 ]
 
