@@ -1,4 +1,5 @@
 import React from "react";
+import './style.css'
 
 // THIS IS A CONTAINER THAT SPANS THE WIDTH OF THE VIEWPORT //
 export function Container({ children }) {

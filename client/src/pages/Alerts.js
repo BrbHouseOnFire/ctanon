@@ -4,15 +4,13 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { VoteUp, VoteDn, Clear } from "../components/Thumbs"
-
 import { List, ListItem } from "../components/List";
+
 // import { ColorInput, CategoryInput, Input, TextArea, FormBtn } from "../components/Form";
-import "../assets/alerts.css"
+
 const moment = require("moment");
 
 function Alerts() {
-
-  
 
   // Setting our component's initial state
   const [alerts, setAlerts] = useState([])
@@ -174,7 +172,7 @@ function Alerts() {
                     <Col data-clr="clrBox" classInfo="-md-1">
                       <Link to={"/alerts/" + alert._id}>
                         {/* Line Color */}
-                        {alert.line}
+                        <div className={alert.line}>{'\u00A0 \u00A0 \u00A0'}</div>
                       </Link>
                     </Col>
 
