@@ -216,7 +216,7 @@ function Alerts() {
                         <Col classInfo="">
                           {/* Clear Marks */}
                           <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
-                          {alert.dateTime}
+                          {moment(alert.dateTime, "YYYYMMDDHHmmss").fromNow()}
                         </Col>
                         
                       </Row>

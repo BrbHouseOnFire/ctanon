@@ -6,7 +6,9 @@ const alertSchema = new Schema({
   category: { type: String, required: false },
   description: { type: String, required: false },
   votes: { type: Number, required: false, default: 0 },
+  voted: { type: Boolean, required: false, default: false },
   cleared: { type: Number, required: false, default: 0 },
+  hidden: { type: Boolean, required: false, default: false },
   dateTime: { type: String, required: false }
 })
 
