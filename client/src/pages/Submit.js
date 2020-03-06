@@ -55,7 +55,7 @@ function Submit() {
       votes: 0,
       voted: false,
       hide: false,
-      date: 'hi'
+      dateTime: 'hi'
     })
       .then(res => loadAlerts())
       .catch(err => console.log(err));
