@@ -73,7 +73,8 @@ function Submit() {
           <form onSubmit={handleFormSubmit}>
             <ColorInput
               name="line"
-              onChange={() => setLine(document.getElementById("line").value), FilterTrains}
+              onChange={() => setLine(document.getElementById("line").value)}
+              // FILTERTRAINS imported function was in the onChange above, this was breaking the Post Route //
             />
 
             <CategoryInput

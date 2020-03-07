@@ -13,7 +13,7 @@ export function Input(props) {
 
 export function ColorInput(props) {
   return (
-    <select {...props} defaultValue="default" id="transitLine" className="form-control">
+    <select {...props} defaultValue="default" id="line" className="form-control">
       <option data-val="default">Choose Rail line Color...</option>
       <option id="Red" data-val="Red">Red</option>
       <option id="Blue" data-val="Blue">Blue</option>
