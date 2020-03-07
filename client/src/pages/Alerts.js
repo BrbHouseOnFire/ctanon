@@ -6,6 +6,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { VoteUp, VoteDn, Clear } from "../components/Thumbs"
 import { List, ListItem } from "../components/List";
 
+
 // import { ColorInput, CategoryInput, Input, TextArea, FormBtn } from "../components/Form";
 
 const moment = require("moment");
@@ -45,6 +46,7 @@ function Alerts() {
 
   function sorting(sortFunction) {
     if (sortFunction === "Highest Rated") {
+
       console.log("high trigger")
       filteredAlerts.sort(function(a, b) {
         return parseFloat(b.votes) - parseFloat(a.votes);
@@ -55,6 +57,7 @@ function Alerts() {
 
     } else if (sortFunction === "Most Recent") {
       console.log("recent Trigger")
+
       filteredAlerts.sort(function(a, b) {
         return parseFloat(a.dateTime) - parseFloat(b.dateTime);
       })
@@ -66,7 +69,7 @@ function Alerts() {
 
 
   function upvote(value) {
-    for (let i=0;i<filteredAlerts.length;i++) {
+    for (let i = 0; i < filteredAlerts.length; i++) {
       if (value._id === filteredAlerts[i]._id) {
         if (filteredAlerts[i].voted === false) {
           filteredAlerts[i].votes += 1;
@@ -76,19 +79,19 @@ function Alerts() {
           setFilteredAlerts(change);
 
           API.getAlert(value._id)
-          .then(res => {
-            let up = res.data.votes + 1;
-            API.updateAlert(res.data._id, {votes: up})
-              .then(res => {
-              })
-          });
+            .then(res => {
+              let up = res.data.votes + 1;
+              API.updateAlert(res.data._id, { votes: up })
+                .then(res => {
+                })
+            });
         }
       };
     };
   };
 
   function downvote(value) {
-    for (let i=0;i<filteredAlerts.length;i++) {
+    for (let i = 0; i < filteredAlerts.length; i++) {
       if (value._id === filteredAlerts[i]._id) {
         if (filteredAlerts[i].voted === false) {
           filteredAlerts[i].votes -= 1;
@@ -98,13 +101,13 @@ function Alerts() {
           setFilteredAlerts(change);
 
           API.getAlert(value._id)
-          .then(res => {
-            let down = res.data.votes - 1;
-            API.updateAlert(res.data._id, {votes: down})
-              .then(res => {
-                
-              })
-          });
+            .then(res => {
+              let down = res.data.votes - 1;
+              API.updateAlert(res.data._id, { votes: down })
+                .then(res => {
+
+                })
+            });
         };
       };
     };
@@ -152,37 +155,39 @@ function Alerts() {
 
     <div className="d-flex flex-column justify-items-start m-5">
 
-      <h3 className="text-right ml-5 mr-5 text-muted"><i>Filter by Line</i></h3>
-
-      <select className="mr-5 ml-5 mb-5" id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value)}>
-        <option className="lead" id="all" value="">All Lines</option>
-        <option className="lead" id="Red" data-val="Red">Red</option>
-        <option className="lead" id="Blue" data-val="Blue">Blue</option>
-        <option className="lead" id="Brn" data-val="Brn">Brown</option>
-        <option className="lead" id="G" data-val="G">Green</option>
-        <option className="lead" id="Org" data-val="Org">Orange</option>
-        <option className="lead" id="P" data-val="P">Purple</option>
-        <option className="lead" id="Pexp" data-val="Pexp">Purple Express</option>
-        <option className="lead" id="Pink" data-val="Pink">Pink</option>
-        <option className="lead" id="Y" data-val="Y">Yellow</option>
-      </select>
-
-      <h3 className="text-right ml-5 mr-5 text-muted"><i>Order By</i></h3>
-      <select className="mr-5 ml-5 mb-5" id="sort" onChange={() => sorting(document.getElementById("sort").value)}>
-      <option className="lead" data-val="mostRecent">Most Recent</option>
-        <option className="lead" data-val="hiRated">Highest Rated</option>
-
-      </select>
-
       <h1 className="display-4 m-5 mb-5">Check out what's going on...</h1>
 
-      <Container>
+      <div className="m-auto d-flex">
+        <h3 className="text-right m-auto text-muted"><i>Filter by Line</i></h3>
+
+        <select className="w-75 h-auto m-auto display-4" id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value)}>
+          <option className="lead" id="all" value="">All Lines</option>
+          <option className="lead" id="Red" data-val="Red">Red</option>
+          <option className="lead" id="Blue" data-val="Blue">Blue</option>
+          <option className="lead" id="Brn" data-val="Brn">Brown</option>
+          <option className="lead" id="G" data-val="G">Green</option>
+          <option className="lead" id="Org" data-val="Org">Orange</option>
+          <option className="lead" id="P" data-val="P">Purple</option>
+          <option className="lead" id="Pexp" data-val="Pexp">Purple Express</option>
+          <option className="lead" id="Pink" data-val="Pink">Pink</option>
+          <option className="lead" id="Y" data-val="Y">Yellow</option>
+        </select>
+
+        <h3 className="text-right m-auto w-75 text-muted"><i>Order By</i></h3>
+        <select className="m-5 w-75 h-auto m-auto display-4" id="sort" onChange={() => sorting(document.getElementById("sort").value)}>
+          <option className="lead" data-val="mostRecent">Most Recent</option>
+          <option className="lead" data-val="hiRated">Highest Rated</option>
+        </select>
+      </div>
+
+      <Container >
         <Row >
           {alerts.length ? (
-            <List >
+            <List  >
 
               {filteredAlerts.map(alert => (
-                <ListItem className="d-flex justify-items-center"key={alert._id}>
+
+                <ListItem className="d-flex justify-items-center" key={alert._id}>
                   <Row>
 
                     {/*  Line Color col */}
@@ -195,7 +200,7 @@ function Alerts() {
 
                     {/*  Content col */}
                     <Col data-cnt="cntBox" classInfo="-md-10">
-                      
+
                       <Row >
                         <Link to={"/alerts/" + alert._id}>
                           {/* Details */}
@@ -218,7 +223,7 @@ function Alerts() {
                           <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
                           {moment(alert.dateTime, "YYYYMMDDHHmmss").fromNow()}
                         </Col>
-                        
+
                       </Row>
 
                     </Col>
@@ -226,9 +231,9 @@ function Alerts() {
                     {/* Votes and Clear Box */}
                     <Col data-vot="votBox" classInfo="">
                       <Row >
-                        <Clear  onClick={() => clear(alert)}/>
-                        <VoteUp onClick={() => upvote(alert)}/>
-                        <VoteDn onClick={() => downvote(alert)}/>
+                        <Clear onClick={() => clear(alert)} />
+                        <VoteUp onClick={() => upvote(alert)} />
+                        <VoteDn onClick={() => downvote(alert)} />
                       </Row>
                     </Col>
 
@@ -239,6 +244,7 @@ function Alerts() {
 
                   </Row>
                 </ListItem>
+
               ))}
             </List>
           )
