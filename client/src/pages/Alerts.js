@@ -47,16 +47,13 @@ function Alerts() {
   function sorting(sortFunction) {
     if (sortFunction === "Highest Rated") {
 
-      console.log("high trigger")
       filteredAlerts.sort(function(a, b) {
         return parseFloat(b.votes) - parseFloat(a.votes);
       });
       let hiRating = [...filteredAlerts];
       setFilteredAlerts(hiRating);
-      console.log(hiRating)
 
     } else if (sortFunction === "Most Recent") {
-      console.log("recent Trigger")
 
       filteredAlerts.sort(function(a, b) {
         return parseFloat(a.dateTime) - parseFloat(b.dateTime);
