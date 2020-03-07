@@ -55,19 +55,14 @@ function Submit() {
       votes: 0,
       voted: false,
       hide: false,
-      date: 'hi'
+      dateTime: 'hi'
     })
       .then(res => loadAlerts())
       .catch(err => console.log(err));
     //}
   };
 
-  function handleTrainSubmit(event) {
-    event.preventDefault();
-    FilterTrains(line);
-  };
-
-
+  
   return (
     <Container>
       <Row classInfo="row">
@@ -77,7 +72,7 @@ function Submit() {
           <form onSubmit={handleFormSubmit}>
             <ColorInput
               name="line"
-              onChange={() => setLine(document.getElementById("line").value), handleTrainSubmit}
+              onChange={() => setLine(document.getElementById("line").value), FilterTrains}
             />
 
             <CategoryInput

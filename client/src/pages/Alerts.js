@@ -46,19 +46,23 @@ function Alerts() {
 
   function sorting(sortFunction) {
     if (sortFunction === "Highest Rated") {
-      console.group("high trigger")
-      filteredAlerts.sort(function (a, b) {
+
+      console.log("high trigger")
+      filteredAlerts.sort(function(a, b) {
         return parseFloat(b.votes) - parseFloat(a.votes);
       });
       let hiRating = [...filteredAlerts];
       setFilteredAlerts(hiRating);
+      console.log(hiRating)
 
     } else if (sortFunction === "Most Recent") {
       console.log("recent Trigger")
-      filteredAlerts.sort(function (a, b) {
-        console.log(parseFloat(b.dateTime))
-        return parseFloat(b.dateTime) - parseFloat(a.dateTime);
+
+      filteredAlerts.sort(function(a, b) {
+        return parseFloat(a.dateTime) - parseFloat(b.dateTime);
       })
+      let newDate = [...filteredAlerts]
+      setFilteredAlerts(newDate);
     }
 
   }
@@ -217,7 +221,7 @@ function Alerts() {
                         <Col classInfo="">
                           {/* Clear Marks */}
                           <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
-                          {alert.dateTime}
+                          {moment(alert.dateTime, "YYYYMMDDHHmmss").fromNow()}
                         </Col>
 
                       </Row>
