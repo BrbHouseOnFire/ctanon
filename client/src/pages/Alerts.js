@@ -26,11 +26,21 @@ function Alerts() {
   function loadAlerts() {
     API.getAlerts()
       .then(res => {
-        setAlerts(res.data);
-        setFilteredAlerts(res.data);
-      }
-      )
-      .catch(err => console.log(err));
+        let all = res.data;
+        let less = [];
+        for (let i = 0; i < all.length; i++) {
+          if (all[i].hidden === false && all[i].cleared < 15) {
+            less.push(all[i]);
+          }
+        }
+        // filteredAlerts = [...less];
+        // let change = [...less];
+        // let newDate = [...filteredAlerts]
+        // setFilteredAlerts(newDate);
+        // let change = [...filteredAlerts];
+        setAlerts(less);
+        setFilteredAlerts(less);
+      }).catch(err => console.log(err));
   };
 
   function filterLine(color) {
@@ -113,7 +123,26 @@ function Alerts() {
   };
 
   function clear(value) {
-    console.log(`${value} clear`)
+    for (let i = 0; i < filteredAlerts.length; i++) {
+      if (value._id === filteredAlerts[i]._id) {
+        if (filteredAlerts[i].hidden === false) {
+          filteredAlerts[i].cleared += 1;
+          filteredAlerts[i].hidden = true;
+          let change = [...filteredAlerts];
+
+          setFilteredAlerts(change);
+
+          API.getAlert(value._id)
+            .then(res => {
+              let up = res.data.cleared + 1;
+              API.updateAlert(res.data._id, { cleared: up })
+                .then(res => {
+
+                })
+            });
+        };
+      };
+    };
   }
 
 
@@ -228,9 +257,9 @@ function Alerts() {
                     {/* Votes and Clear Box */}
                     <Col data-vot="votBox" classInfo="">
                       <Row >
-                        <Clear onClick={() => clear(alert)} />
                         <VoteUp onClick={() => upvote(alert)} />
                         <VoteDn onClick={() => downvote(alert)} />
+                        <Clear onClick={() => clear(alert)} />
                       </Row>
                     </Col>
 

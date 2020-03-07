@@ -17,8 +17,8 @@ const alertSeed =
     line: "Red",
     category: "Indecent Exposure",
     description: "I saw an ass crack at Harrison",
-    votes: -4,
-    cleared: 0,
+    votes: -8,
+    cleared: 14,
     dateTime: moment().format("YYYYMMDDHHmmss"),
     voted: false,
     hidden: false
@@ -58,7 +58,7 @@ const alertSeed =
     category: "Indecent exposure",
     description: "This woman exposed her ankles on the train",
     votes: -13,
-    cleared: 0,
+    cleared: 14,
     dateTime: moment().format("YYYYMMDDHHmmss"),
     voted: false,
     hidden: false
@@ -148,7 +148,7 @@ const alertSeed =
     category: "Obscene gestures",
     description: "got the bird from a homeless guy at the kedzie stop",
     votes: -5,
-    cleared: 0,
+    cleared: 14,
     dateTime: moment().format("YYYYMMDDHHmmss"),
     voted: false,
     hidden: false
@@ -178,7 +178,7 @@ const alertSeed =
     category: "Inappropriate photographing/filming",
     description: "some kid took their parents phone and is going around taking pictures of everyone.",
     votes: -2,
-    cleared: 0,
+    cleared: 13,
     dateTime: moment().format("YYYYMMDDHHmmss"),
     voted: false,
     hidden: false
