@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { VoteUp, VoteDn, Clear } from "../components/Thumbs"
 import { List, ListItem } from "../components/List";
+import "../assets/css/loader.css";
 
 
 // import { ColorInput, CategoryInput, Input, TextArea, FormBtn } from "../components/Form";
@@ -273,10 +274,15 @@ function Alerts() {
 
               ))}
             </List>
-          )
-            :
-            (
-              <h3>Loading Results... Ein Moment Bitte!</h3>
+          ):(
+              <>
+                <div class="loader">
+                  <span className="cube"></span>
+                  {/* <span className="cube"></span> */}
+                  {/* <span className="cube"></span> */}
+                  {/* <span className="cube"></span> */}
+                </div>
+              </>
             )}
         </Row>
       </Container>

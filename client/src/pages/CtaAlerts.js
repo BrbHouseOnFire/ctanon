@@ -6,6 +6,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Axios from "axios";
 import { List, ListItem } from "../components/List";
 import { ColorInput, CategoryInput, Input, TextArea, FormBtn, FilterTrains } from "../components/Form";
+import "../assets/css/loader.css";
 
 let ctaRoutes = [];
 
@@ -44,20 +45,25 @@ function ctaAlerts() {
         <div>
           <h1 className="display-1">CTA Status Alerts</h1>
         </div>
-        <div>
-          <div>
-            <div>
-              {ctaRoutes.map(ctaRoute => (
+          {ctaAlerts.length ? (
+              ctaAlerts.map(ctaRoute => (
                 <div className={ctaRoute.Status + " d-flex h-100 align-items-center justify-content-between p-2 m-4 rounded"}>
                   <a alt="Official CTA Alerts Webpage" title="Official CTA Alerts Webpage" href="https://www.transitchicago.com/travel-information/railstatus/" 
                     className={ctaRoute.Route + " rounded display-4"}>{'\u00A0 \u00A0 \u00A0'}
                   </a>
                   <div className=" display-4 p-2">{ctaRoute.Status}</div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
+              ))
+          ):(
+              <>
+                <div class="loader">
+                  <span className="cube"></span>
+                  {/* <span className="cube"></span> */}
+                  {/* <span className="cube"></span> */}
+                  {/* <span className="cube"></span> */}
+                </div>
+              </>
+            )}
     </div>
   )
 }
