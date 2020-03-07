@@ -48,7 +48,7 @@ function Alerts() {
     if (sortFunction === "Highest Rated") {
 
       console.log("high trigger")
-      filteredAlerts.sort(function(a, b) {
+      filteredAlerts.sort(function (a, b) {
         return parseFloat(b.votes) - parseFloat(a.votes);
       });
       let hiRating = [...filteredAlerts];
@@ -58,7 +58,7 @@ function Alerts() {
     } else if (sortFunction === "Most Recent") {
       console.log("recent Trigger")
 
-      filteredAlerts.sort(function(a, b) {
+      filteredAlerts.sort(function (a, b) {
         return parseFloat(a.dateTime) - parseFloat(b.dateTime);
       })
       let newDate = [...filteredAlerts]
@@ -153,107 +153,90 @@ function Alerts() {
 
   return (
 
-    <div className="d-flex flex-column justify-items-start m-5">
+    <div className="d-flex flex-column align-items-center m-auto w w-75">
 
       <h1 className="display-4 m-5 mb-5">Check out what's going on...</h1>
 
       <div className="m-auto d-flex">
-        <h3 className="text-right m-auto text-muted"><i>Filter by Line</i></h3>
+        <div className="d-flex flex-column">
+          <h3 className="text-left m-auto text-muted"><i>Filter by Line</i></h3>
+          <select className="w-75 h-auto m-auto display-4" id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value)}>
+            <option className="lead" id="all" value="">All Lines</option>
+            <option className="lead" id="Red" data-val="Red">Red</option>
+            <option className="lead" id="Blue" data-val="Blue">Blue</option>
+            <option className="lead" id="Brn" data-val="Brn">Brown</option>
+            <option className="lead" id="G" data-val="G">Green</option>
+            <option className="lead" id="Org" data-val="Org">Orange</option>
+            <option className="lead" id="P" data-val="P">Purple</option>
+            <option className="lead" id="Pexp" data-val="Pexp">Purple Express</option>
+            <option className="lead" id="Pink" data-val="Pink">Pink</option>
+            <option className="lead" id="Y" data-val="Y">Yellow</option>
+          </select>
+        </div>
 
-        <select className="w-75 h-auto m-auto display-4" id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value)}>
-          <option className="lead" id="all" value="">All Lines</option>
-          <option className="lead" id="Red" data-val="Red">Red</option>
-          <option className="lead" id="Blue" data-val="Blue">Blue</option>
-          <option className="lead" id="Brn" data-val="Brn">Brown</option>
-          <option className="lead" id="G" data-val="G">Green</option>
-          <option className="lead" id="Org" data-val="Org">Orange</option>
-          <option className="lead" id="P" data-val="P">Purple</option>
-          <option className="lead" id="Pexp" data-val="Pexp">Purple Express</option>
-          <option className="lead" id="Pink" data-val="Pink">Pink</option>
-          <option className="lead" id="Y" data-val="Y">Yellow</option>
-        </select>
-
-        <h3 className="text-right m-auto w-75 text-muted"><i>Order By</i></h3>
-        <select className="m-5 w-75 h-auto m-auto display-4" id="sort" onChange={() => sorting(document.getElementById("sort").value)}>
-          <option className="lead" data-val="mostRecent">Most Recent</option>
-          <option className="lead" data-val="hiRated">Highest Rated</option>
-        </select>
+        <div className="d-flex flex-column">
+          <h3 className="text-right m-auto text-muted"><i>Order By</i></h3>
+          <select className="m-5 h-auto m-auto display-4" id="sort" onChange={() => sorting(document.getElementById("sort").value)}>
+            <option className="lead" data-val="mostRecent">Most Recent</option>
+            <option className="lead" data-val="hiRated">Highest Rated</option>
+          </select>
+        </div>
       </div>
 
-      <Container >
-        <Row >
-          {alerts.length ? (
-            <List  >
+      <div className="w">
+        {alerts.length ? (
+          <List>
 
-              {filteredAlerts.map(alert => (
+            {filteredAlerts.map(alert => (
 
-                <ListItem className="d-flex justify-items-center" key={alert._id}>
-                  <Row>
+              <ListItem className="o-h" key={alert._id}>
+                <div className="d-flex justify-content-between align-items-center">
 
-                    {/*  Line Color col */}
-                    <Col data-clr="clrBox" classInfo="-md-1">
-                      <Link to={"/alerts/" + alert._id}>
-                        {/* Line Color */}
-                        <div className={alert.line}>{'\u00A0 \u00A0 \u00A0'}</div>
-                      </Link>
-                    </Col>
+                  <Link to={"/alerts/" + alert._id}>
+                    <div className={alert.line}>{'\u00A0 \u00A0 \u00A0'}</div>
+                  </Link>
 
-                    {/*  Content col */}
-                    <Col data-cnt="cntBox" classInfo="-md-10">
+                  <div className="d-flex flex-column align-items-center ">
+                    <Link to={"/alerts/" + alert._id}>
+                      {/* Details */}
+                      {alert.description}
+                    </Link>
 
-                      <Row >
-                        <Link to={"/alerts/" + alert._id}>
-                          {/* Details */}
-                          {alert.description}
-                        </Link>
-                      </Row>
+                    <div className="d-flex align-items-center justify-items-center">
+                      <div >
+                        {/* Score */}
+                        {`Score: ${alert.votes}`}
+                      </div>
 
-                      <Row >
-                        <Col classInfo="-md-2">
-                          {/* Upvotes */}
-                          {`Score: ${alert.votes}`}
-                        </Col>
-                        <Col classInfo="">
-                          {/* Clear Marks */}
-                          <img alt="" src={require('./../assets/images/ctanonImages/exp.png')} ></img>
-                          {`x${alert.cleared}`}
-                        </Col>
-                        <Col classInfo="">
-                          {/* Clear Marks */}
-                          <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
-                          {moment(alert.dateTime, "YYYYMMDDHHmmss").fromNow()}
-                        </Col>
+                      <div className="ml-4 mr-4">
+                        {/* Clears */}
+                        <img alt="" src={require('./../assets/images/ctanonImages/exp.png')} />
+                        {`x${alert.cleared}`}
+                      </div>
 
-                      </Row>
+                      <div >
+                        {/* post time */}
+                        <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
+                        {moment(alert.dateTime, "YYYYMMDDHHmmss").fromNow()}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="d-flex flex-column align-items-center">
+                    <Clear onClick={() => clear(alert)} />
+                    <VoteUp onClick={() => upvote(alert)} />
+                    <VoteDn onClick={() => downvote(alert)} />
+                  </div>
+                </div>
+              </ListItem>
 
-                    </Col>
-
-                    {/* Votes and Clear Box */}
-                    <Col data-vot="votBox" classInfo="">
-                      <Row >
-                        <Clear onClick={() => clear(alert)} />
-                        <VoteUp onClick={() => upvote(alert)} />
-                        <VoteDn onClick={() => downvote(alert)} />
-                      </Row>
-                    </Col>
-
-                    {/* delete col, maybe for later */}
-                    {/* <Col classInfo="">
-                      <DeleteBtn onClick={() => deleteAlert(alert._id)} />
-                    </Col> */}
-
-                  </Row>
-                </ListItem>
-
-              ))}
-            </List>
-          )
-            :
-            (
-              <h3>Loading Results... Ein Moment Bitte!</h3>
-            )}
-        </Row>
-      </Container>
+            ))}
+          </List>
+        )
+          :
+          (
+            <h3>Loading Results... Ein Moment Bitte!</h3>
+          )}
+      </div>
     </div>
   );
 }
@@ -261,3 +244,7 @@ function Alerts() {
 
 export default Alerts;
 
+{/* delete col, maybe for later */ }
+{/* <Col classInfo="">
+                        <DeleteBtn onClick={() => deleteAlert(alert._id)} />
+                      </Col> */}
