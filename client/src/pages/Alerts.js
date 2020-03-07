@@ -185,9 +185,9 @@ function Alerts() {
       <h1 className="display-4 m-5 mb-5">Check out what's going on...</h1>
 
       <div className="m-auto d-flex">
-        <div className="d-flex flex-column">
-          <h3 className="text-left m-auto text-muted"><i>Filter by Line</i></h3>
-          <select className="w-75 h-auto m-auto display-4" id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value)}>
+        <div className="m-4 d-flex flex-column">
+          <h3 className="text-muted"><i>Filter by Line</i></h3>
+          <select className="h-auto m-auto display-4" id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value)}>
             <option className="lead" id="all" value="">All Lines</option>
             <option className="lead" id="Red" data-val="Red">Red</option>
             <option className="lead" id="Blue" data-val="Blue">Blue</option>
@@ -201,8 +201,8 @@ function Alerts() {
           </select>
         </div>
 
-        <div className="d-flex flex-column">
-          <h3 className="text-right m-auto text-muted"><i>Order By</i></h3>
+        <div className="m-4 d-flex flex-column">
+          <h3 className="text-muted"><i>Order By</i></h3>
           <select className="m-5 h-auto m-auto display-4" id="sort" onChange={() => sorting(document.getElementById("sort").value)}>
             <option className="lead" data-val="mostRecent">Most Recent</option>
             <option className="lead" data-val="hiRated">Highest Rated</option>
@@ -216,11 +216,11 @@ function Alerts() {
 
             {filteredAlerts.map(alert => (
 
-              <ListItem className="o-h" key={alert._id}>
+              <ListItem className="" key={alert._id}>
                 <div className="d-flex justify-content-between align-items-center">
 
                   <Link to={"/alerts/" + alert._id}>
-                    <div className={alert.line}>{'\u00A0 \u00A0 \u00A0'}</div>
+                    <div className={alert.line+" p-3 rounded"}>{'\u00A0 \u00A0 \u00A0'}</div>
                   </Link>
 
                   <div className="d-flex flex-column align-items-center ">
