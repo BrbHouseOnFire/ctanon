@@ -83,7 +83,7 @@ function Submit() {
       voted: false,
       cleared: 0,
       hidden: false,
-      dateTime: ''
+      dateTime: moment().format("YYYYMMDDHHmmss")
     })
       .then(res => loadAlerts())
       .catch(err => console.log(err));
