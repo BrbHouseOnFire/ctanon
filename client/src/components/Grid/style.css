@@ -1,5 +1,5 @@
 
-.Red {background-color: rgba(227, 25, 55); height:100%}
+.Red {background-color: rgba(227, 25, 55);height:100%}
 .Blue {background-color: rgba(0, 157, 220); height:100%}
 .Brown {background-color: rgba(118, 66, 0); height:100%}
 .Green {background-color: rgba(0, 169, 79); height:100%}
@@ -19,5 +19,12 @@
     width: inherit;
 }
 
-.Normal {background: linear-gradient(to left, rgba(0, 255, 119, .5), rgba(255,255,255));}
-.Planned {background: linear-gradient(to left, rgba(255, 230, 0, 0.767), rgba(255,255,255));}
+.Normal {background: linear-gradient(to left, rgba(0, 255, 242, 0.123), rgba(255,255,255));}
+.Planned {background: linear-gradient(to left, rgba(0, 255, 119, .5), rgba(255,255,255));}
+.Temporarily {background: linear-gradient(to left, rgba(255, 230, 0, 0.767), rgba(255,255,255));}
+.Significant {background: linear-gradient(to left, rgba(255, 123, 0, 0.767), rgba(255,255,255));}
+.Disruption {background: linear-gradient(to left, rgba(255, 0, 0, 0.767), rgba(255,255,255));}
+
+.w {
+    min-width: 90vw;
+}
