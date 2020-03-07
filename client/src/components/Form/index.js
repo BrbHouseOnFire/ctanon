@@ -13,17 +13,17 @@ export function Input(props) {
 
 export function ColorInput(props) {
   return (
-    <select {...props} defaultValue="default" id="line" className="form-control" onChange={FilterTrains} >
-      <option value="default">Choose Rail line Color...</option>
-      <option id="Red" value="Red">Red</option>
-      <option id="Blue" value="Blue">Blue</option>
-      <option id="Brn" value="Brn">Brown</option>
-      <option id="G" value="G">Green</option>
-      <option id="Org" value="Org">Orange</option>
-      <option id="P" value="P">Purple</option>
-      <option id="Pexp" value="Pexp">Purple Express</option>
-      <option id="Pink" value="Pink">Pink</option>
-      <option id="Y" value="Y">Yellow</option>
+    <select {...props} defaultValue="default" id="transitLine" className="form-control">
+      <option data-val="default">Choose Rail line Color...</option>
+      <option id="Red" data-val="Red">Red</option>
+      <option id="Blue" data-val="Blue">Blue</option>
+      <option id="Brn" data-val="Brn">Brown</option>
+      <option id="G" data-val="G">Green</option>
+      <option id="Org" data-val="Org">Orange</option>
+      <option id="P" data-val="P">Purple</option>
+      <option id="Pexp" data-val="Pexp">Purple Express</option>
+      <option id="Pink" data-val="Pink">Pink</option>
+      <option id="Y" data-val="Y">Yellow</option>
     </select>
   );
 }
