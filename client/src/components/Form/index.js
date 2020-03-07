@@ -30,9 +30,15 @@ export function ColorInput(props) {
 
 //CTA API call to get all train color information
 export function FilterTrains(e) {
+  e.preventDefault();
   axios.get(`http://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=f1e50ffc99634da4a135da024e8fc024&rt=${e.target.value}&outputType=JSON`)
   .then(res => {
-    const trains = res.data;
+    //this is every train of the chosen color displayed in arrays
+    const trains = res.data.ctatt.route[0].train;
+    //loop through data and pull out trDr 
+    //(1 if Howard/O'Hare/Kimball/Harlem/Loop/Linden/Skokie bound
+    //2 if 95th/Forest Park/Loop[brn]/Ashland/Midway/Loop[prpl]/54th bound)
+    //loop through data and pull nextStaNm    
     console.log(trains);
   })
 }
