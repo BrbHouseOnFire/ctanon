@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { VoteUp, VoteDn, Clear } from "../components/Thumbs"
 import { List, ListItem } from "../components/List";
+import "../assets/css/loader.css";
 
 
 // import { ColorInput, CategoryInput, Input, TextArea, FormBtn } from "../components/Form";
@@ -26,11 +27,21 @@ function Alerts() {
   function loadAlerts() {
     API.getAlerts()
       .then(res => {
-        setAlerts(res.data);
-        setFilteredAlerts(res.data);
-      }
-      )
-      .catch(err => console.log(err));
+        let all = res.data;
+        let less = [];
+        for (let i = 0; i < all.length; i++) {
+          if (all[i].hidden === false && all[i].cleared < 15) {
+            less.push(all[i]);
+          }
+        }
+        // filteredAlerts = [...less];
+        // let change = [...less];
+        // let newDate = [...filteredAlerts]
+        // setFilteredAlerts(newDate);
+        // let change = [...filteredAlerts];
+        setAlerts(less);
+        setFilteredAlerts(less);
+      }).catch(err => console.log(err));
   };
 
   function filterLine(color) {
@@ -47,16 +58,13 @@ function Alerts() {
   function sorting(sortFunction) {
     if (sortFunction === "Highest Rated") {
 
-      console.log("high trigger")
-      filteredAlerts.sort(function (a, b) {
+      filteredAlerts.sort(function(a, b) {
         return parseFloat(b.votes) - parseFloat(a.votes);
       });
       let hiRating = [...filteredAlerts];
       setFilteredAlerts(hiRating);
-      console.log(hiRating)
 
     } else if (sortFunction === "Most Recent") {
-      console.log("recent Trigger")
 
       filteredAlerts.sort(function (a, b) {
         return parseFloat(a.dateTime) - parseFloat(b.dateTime);
@@ -116,7 +124,26 @@ function Alerts() {
   };
 
   function clear(value) {
-    console.log(`${value} clear`)
+    for (let i = 0; i < filteredAlerts.length; i++) {
+      if (value._id === filteredAlerts[i]._id) {
+        if (filteredAlerts[i].hidden === false) {
+          filteredAlerts[i].cleared += 1;
+          filteredAlerts[i].hidden = true;
+          let change = [...filteredAlerts];
+
+          setFilteredAlerts(change);
+
+          API.getAlert(value._id)
+            .then(res => {
+              let up = res.data.cleared + 1;
+              API.updateAlert(res.data._id, { cleared: up })
+                .then(res => {
+
+                })
+            });
+        };
+      };
+    };
   }
 
 
@@ -231,11 +258,16 @@ function Alerts() {
 
             ))}
           </List>
-        )
-          :
-          (
-            <h3>Loading Results... Ein Moment Bitte!</h3>
-          )}
+          ):(
+              <>
+                <div class="loader">
+                  <span className="cube"></span>
+                  {/* <span className="cube"></span> */}
+                  {/* <span className="cube"></span> */}
+                  {/* <span className="cube"></span> */}
+                </div>
+              </>
+            )}
       </div>
     </div>
   );
