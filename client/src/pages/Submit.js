@@ -69,13 +69,11 @@ function Submit() {
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
   function handleFormSubmit(event) {
-    // console.log(formObject.line.value)
-    // console.log("form click works!!");
-    // console.log(line);
-    // console.log(category);
-    // console.log(desc);
+    console.log("form click works!!");
+    console.log(line);
+    console.log(category);
+    console.log(desc);
 
-    event.preventDefault();
     //if (formObject.color && formObject.category) { i took this out to prevent requiring data -DDD
     API.saveAlert({
       line: line,
@@ -99,7 +97,7 @@ function Submit() {
         <Col classInfo="col-md-6">
           <h1 className="">Tell Chicago what's happening.</h1>
 
-          <form onSubmit={handleFormSubmit}>
+          <form>
             <ColorInput
               name="line"
               onChange={() => handleColorInput()}
@@ -116,7 +114,7 @@ function Submit() {
               onChange={() => setDesc(document.getElementById("description").value)}
             />
 
-            <FormBtn>
+            <FormBtn onClick={() => handleFormSubmit()}>
               Submit Alert
             </FormBtn>
           </form>
