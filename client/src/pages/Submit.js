@@ -13,28 +13,29 @@ function Submit() {
   const [line, setLine] = useState('');
   const [category, setCategory] = useState('');
   const [desc, setDesc] = useState('');
+  const moment = require("moment");
 
   // Load all alerts and store them with setAlerts
-  useEffect(() => {
-    loadAlerts()
-  }, [])
+  // useEffect(() => {
+  //   loadAlerts()
+  // }, [])
 
 
   // Loads all alerts and sets them to alerts
-  function loadAlerts() {
-    API.getAlerts()
-      .then(res =>
-        setAlerts(res.data)
-      )
-      .catch(err => console.log(err));
-  };
+  // function loadAlerts() {
+  //   API.getAlerts()
+  //     .then(res =>
+  //       setAlerts(res.data)
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   // Deletes a alert from the database with a given id, then reloads alerts from the db
-  function deleteAlert(id) {
-    API.deleteAlert(id)
-      .then(res => loadAlerts())
-      .catch(err => console.log(err));
-  };
+  // function deleteAlert(id) {
+  //   API.deleteAlert(id)
+  //     .then(res => loadAlerts())
+  //     .catch(err => console.log(err));
+  // };
 
   function handleColorInput() {
     let v = document.getElementById("line").value;
@@ -68,8 +69,8 @@ function Submit() {
 
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
-  function handleFormSubmit() {
 
+  function handleFormSubmit() {
     //if (formObject.color && formObject.category) { i took this out to prevent requiring data -DDD
     API.saveAlert({
       line: line,
@@ -81,7 +82,6 @@ function Submit() {
       hidden: false,
       dateTime: moment().format("YYYYMMDDHHmmss")
     })
-      .then(res => loadAlerts())
       .catch(err => console.log(err));
     //}
   };
