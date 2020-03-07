@@ -54,8 +54,9 @@ function Submit() {
       description: desc,
       votes: 0,
       voted: false,
-      hide: false,
-      dateTime: 'hi'
+      cleared: 0,
+      hidden: false,
+      dateTime: ''
     })
       .then(res => loadAlerts())
       .catch(err => console.log(err));
