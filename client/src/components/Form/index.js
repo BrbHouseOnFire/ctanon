@@ -14,7 +14,7 @@ export function Input(props) {
 export function ColorInput(props) {
   return (
     <select {...props} defaultValue="default" id="line" className="form-control">
-      <option data-val="default">Choose Rail line Color...</option>
+      <option data-val="default" value="">Choose Rail line Color...</option>
       <option id="Red" data-val="Red">Red</option>
       <option id="Blue" data-val="Blue">Blue</option>
       <option id="Brn" data-val="Brn">Brown</option>
@@ -30,8 +30,8 @@ export function ColorInput(props) {
 
 //CTA API call to get all train color information
 export function FilterTrains(e) {
-  e.preventDefault();
-  axios.get(`http://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=f1e50ffc99634da4a135da024e8fc024&rt=${e.target.value}&outputType=JSON`)
+  // e.preventDefault();
+  axios.get(`http://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key=f1e50ffc99634da4a135da024e8fc024&rt=${e}&outputType=JSON`)
   .then(res => {
     //this is every train of the chosen color displayed in arrays
     const trains = res.data.ctatt.route[0].train;

@@ -34,17 +34,46 @@ function Submit() {
     API.deleteAlert(id)
       .then(res => loadAlerts())
       .catch(err => console.log(err));
-  }
+  };
+
+  function handleColorInput() {
+    let v = document.getElementById("line").value;
+    setLine(v);
+    if (v === "Brown") {
+      FilterTrains("Brn");
+    }
+    else if (v === "Green") {
+      FilterTrains("G");
+    }
+    else if (v === "Orange") {
+      FilterTrains("Org");
+    }
+    else if (v === "Purple") {
+      FilterTrains("P");
+    }
+    else if (v === "Purple Express") {
+      FilterTrains("Pexp");
+    }
+    else if (v === "Yellow") {
+      FilterTrains("Y");
+    }
+    else if (v === "") {
+      // do nothing if they re-select the default text
+    }
+    else {
+      FilterTrains(v);
+    }
+  };
 
 
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
   function handleFormSubmit(event) {
     // console.log(formObject.line.value)
-    console.log("form click works!!");
-    console.log(line);
-    console.log(category);
-    console.log(desc);
+    // console.log("form click works!!");
+    // console.log(line);
+    // console.log(category);
+    // console.log(desc);
 
     event.preventDefault();
     //if (formObject.color && formObject.category) { i took this out to prevent requiring data -DDD
@@ -73,8 +102,7 @@ function Submit() {
           <form onSubmit={handleFormSubmit}>
             <ColorInput
               name="line"
-              onChange={() => setLine(document.getElementById("line").value)}
-              // FILTERTRAINS imported function was in the onChange above, this was breaking the Post Route //
+              onChange={() => handleColorInput()}
             />
 
             <CategoryInput
