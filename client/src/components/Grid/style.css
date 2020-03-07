@@ -8,3 +8,16 @@
 .Pink {background-color: rgba(243, 139, 185); height:100%}
 .Yellow {background-color: rgba(255, 232, 0); height:100%}
 .Grey {background-color: rgba(86, 90, 92); height:100%}
+.Express {
+    background: repeating-linear-gradient( 
+    180deg,
+    rgba(73, 47, 146),
+    rgba(73, 47, 146) .5vw,
+    rgba(255,255,255) .5vw,
+    rgba(255,255,255) 1vw);
+    height: 100%;
+    width: inherit;
+}
+
+.Normal {background: linear-gradient(to left, rgba(0, 255, 119, .5), rgba(255,255,255));}
+.Planned {background: linear-gradient(to left, rgba(255, 230, 0, 0.767), rgba(255,255,255));}
