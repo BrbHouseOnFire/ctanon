@@ -5,7 +5,7 @@ import "./style.css";
 
 export function List({ children }) {
   return (
-      <ul className="m-auto list-group">{children}</ul>
+      <ul className="list-group">{children}</ul>
   );
 }
 

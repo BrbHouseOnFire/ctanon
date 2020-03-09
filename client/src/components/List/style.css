@@ -31,3 +31,5 @@
 .list-overflow-container li:last-child {
   border-bottom: none;
 }
+
+div { white-space: nowrap; }
