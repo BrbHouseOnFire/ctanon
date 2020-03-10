@@ -86,37 +86,35 @@ function Submit() {
     //}
   };
 
-  
+
   return (
-    <Container>
-      <Row classInfo="row">
-        <Col classInfo="col-md-6">
-          <h1 className="">Tell Chicago what's happening.</h1>
 
-          <form>
-            <ColorInput
-              name="line"
-              onChange={() => handleColorInput()}
-            />
+    <div className="d-flex flex-column align-items-center justify-content-center">
+      <h1 className="display-4 m-4">Tell Chicago what's happening.</h1>
 
-            <CategoryInput
-              name="category"
-              onChange={() => setCategory(document.getElementById("category").value)}
-            />
+      <form>
+        <div className="d-flex">
+          <ColorInput
+            name="line"
+            onChange={() => handleColorInput()}
+          />
 
-            <TextArea
-              name="description"
-              placeholder="Describe what's going on here. Max 140 characters."
-              onChange={() => setDesc(document.getElementById("description").value)}
-            />
+          <CategoryInput
+            name="category"
+            onChange={() => setCategory(document.getElementById("category").value)}
+          />
+        </div>
+        <TextArea
+          name="description"
+          placeholder="Describe what's going on here. Max 140 characters."
+          onChange={() => setDesc(document.getElementById("description").value)}
+        />
 
-            <FormBtn onClick={() => handleFormSubmit()}>
-              Submit Alert
+        <FormBtn onClick={() => handleFormSubmit()}>
+          Submit Alert
             </FormBtn>
-          </form>
-        </Col>
-      </Row>
-    </Container>
+      </form>
+    </div>
   )
 }
 
