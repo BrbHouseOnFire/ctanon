@@ -1,4 +1,5 @@
 import React from "react";
+import './style.css'
 import axios from "axios";
 
 // This file exports the Input, TextArea, and FormBtn components
@@ -14,7 +15,7 @@ export function Input(props) {
 export function ColorInput(props) {
   return (
     <select {...props} defaultValue="default" id="line" className="form-control">
-      <option data-val="default" value="">Choose Rail line Color...</option>
+      <option data-val="default" value="">Choose a Line...</option>
       <option id="Red" data-val="Red">Red</option>
       <option id="Blue" data-val="Blue">Blue</option>
       <option id="Brn" data-val="Brn">Brown</option>
@@ -47,7 +48,7 @@ export function FilterTrains(e) {
 export function CategoryInput(props) {
   return (
     <select {...props} defaultValue="default" id="category" className="form-control">
-        <option value="default" > Choose an Incident Category...</option>
+        <option value="default" > Choose a Category...</option>
       <option className="" id="" data-val="threat">Verbal or physical threat(s)</option>
       <option className="" id="" data-val="inAppTouch">Inappropriate touching</option>
       <option className="" id="" data-val="indExp">Indecent exposure</option>
@@ -79,7 +80,7 @@ export function CategoryInput(props) {
 export function TextArea(props) {
   return (
     <div name="description" className="form-group">
-      <textarea className="form-control" id="description" rows="3" maxLength="140" spellCheck="default" {...props} />
+      <textarea className="form-control" id="description" rows="5" maxLength="140"  spellCheck="default" {...props} />
     </div>
   );
 }
