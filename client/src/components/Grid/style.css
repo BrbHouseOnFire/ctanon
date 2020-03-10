@@ -30,8 +30,9 @@
     max-width: 90vw;
 }
 
-.w-desc{
-    max-width: 80%;
+.w-desc {
+    max-width: 70vw;
+    white-space: nowrap;
     font-size: x-large;
     overflow: hidden;
     text-overflow: ellipsis;
