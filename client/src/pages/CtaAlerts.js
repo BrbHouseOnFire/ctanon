@@ -56,7 +56,7 @@ function ctaAlerts() {
               ))
           ):(
               <>
-                <div class="loader">
+                <div className="loader">
                   <span className="cube"></span>
                   {/* <span className="cube"></span> */}
                   {/* <span className="cube"></span> */}
