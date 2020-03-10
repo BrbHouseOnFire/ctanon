@@ -223,10 +223,9 @@ function Alerts() {
                     <div className={alert.line + " p-3 rounded"}>{'\u00A0 \u00A0 \u00A0'}</div>
                   </Link>
 
-                  <div className=" flex-grow-1 d-flex flex-column align-items-start ">
-                    <Link to={"/alerts/" + alert._id} title="See Full Alert">
-                      {/* Details */}
-                      <div className="w-desc p-3 lead">{alert.description} </div>
+                  <div className=" d-flex flex-column align-items-start ">
+                    <Link to={"/alerts/" + alert._id} className="w-desc p-3 lead" title="See Full Alert">
+                      {alert.description}
                     </Link>
 
                     <div className=" d-flex align-items-center justify-items-center pl-3">
@@ -237,7 +236,7 @@ function Alerts() {
 
                       <div className=" ml-4 mr-4">
                         {/* Clears */}
-                        <img alt="" src={require('./../assets/images/ctanonImages/exp.png')} title="# of Users Who Marked This Alert as Stale" />
+                        <img alt="" src={require('./../assets/images/ctanonImages/stale.png')} title="# of Users Who Marked This Alert as Stale" />
                         {`x${alert.cleared}`}
                       </div>
 
