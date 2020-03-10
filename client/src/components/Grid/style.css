@@ -27,10 +27,12 @@
 
 .mnw-90 {
     min-width: 90vw;
+    max-width: 90vw;
 }
 
 .w-desc{
-    max-width: 75%;
+    max-width: 80%;
+    font-size: x-large;
     overflow: hidden;
     text-overflow: ellipsis;
 }

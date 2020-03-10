@@ -201,11 +201,11 @@ function Alerts() {
           </select>
         </div>
 
-        <div className="m-4 d-flex flex-column">
-          <h3 className="text-muted"><i>Order By</i></h3>
-          <select className="m-5 h-auto m-auto display-4" id="sort" onChange={() => sorting(document.getElementById("sort").value)}>
-            <option className="lead" data-val="mostRecent">Most Recent</option>
-            <option className="lead" data-val="hiRated">Highest Rated</option>
+        <div className=" m-4 d-flex flex-column">
+          <h3 className=" text-muted"><i>Order By</i></h3>
+          <select className=" m-5 h-auto m-auto display-4" id="sort" onChange={() => sorting(document.getElementById("sort").value)}>
+            <option className=" lead" data-val="mostRecent">Most Recent</option>
+            <option className=" lead" data-val="hiRated">Highest Rated</option>
           </select>
         </div>
       </div>
@@ -217,27 +217,27 @@ function Alerts() {
             {filteredAlerts.map(alert => (
 
               <ListItem className="" key={alert._id}>
-                <div className="d-flex  justify-content-between align-items-center">
+                <div className=" d-flex justify-content-start align-items-center m-1">
 
-                  <Link to={"/alerts/" + alert._id}>
+                  <Link to={"/alerts/" + alert._id} title="See Full Alert">
                     <div className={alert.line + " p-3 rounded"}>{'\u00A0 \u00A0 \u00A0'}</div>
                   </Link>
 
-                  <div className="d-flex flex-column align-items-center ">
-                    <Link to={"/alerts/" + alert._id}>
+                  <div className=" flex-grow-1 d-flex flex-column align-items-start ">
+                    <Link to={"/alerts/" + alert._id} title="See Full Alert">
                       {/* Details */}
-                      <div className="w-desc">{alert.description} </div>
+                      <div className="w-desc p-3 lead">{alert.description} </div>
                     </Link>
 
-                    <div className="d-flex align-items-center justify-items-center">
+                    <div className=" d-flex align-items-center justify-items-center pl-3">
                       <div >
                         {/* Score */}
                         {`Score: ${alert.votes}`}
                       </div>
 
-                      <div className="ml-4 mr-4">
+                      <div className=" ml-4 mr-4">
                         {/* Clears */}
-                        <img alt="" src={require('./../assets/images/ctanonImages/exp.png')} />
+                        <img alt="" src={require('./../assets/images/ctanonImages/exp.png')} title="# of Users Who Marked This Alert as Stale" />
                         {`x${alert.cleared}`}
                       </div>
 
@@ -246,12 +246,16 @@ function Alerts() {
                         <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
                         {moment(alert.dateTime, "YYYYMMDDHHmmss").fromNow()}
                       </div>
+                      
                     </div>
+                    
                   </div>
-                  <div className="d-flex flex-column align-items-center">
-                    <Clear onClick={() => clear(alert)} />
+                  <div className=" ml-auto d-flex flex-column justify-content-center align-items-center">
+                    
                     <VoteUp onClick={() => upvote(alert)} />
+                    <Clear onClick={() => clear(alert)} />
                     <VoteDn onClick={() => downvote(alert)} />
+
                   </div>
                 </div>
               </ListItem>
@@ -260,8 +264,8 @@ function Alerts() {
           </List>
         ) : (
             <>
-              <div className="loader">
-                <span className="cube"></span>
+              <div className=" loader">
+                <span className=" cube"></span>
                 {/* <span className="cube"></span> */}
                 {/* <span className="cube"></span> */}
                 {/* <span className="cube"></span> */}
