@@ -58,7 +58,7 @@ function Alerts() {
   function sorting(sortFunction) {
     if (sortFunction === "Highest Rated") {
 
-      filteredAlerts.sort(function(a, b) {
+      filteredAlerts.sort(function (a, b) {
         return parseFloat(b.votes) - parseFloat(a.votes);
       });
       let hiRating = [...filteredAlerts];
@@ -210,23 +210,23 @@ function Alerts() {
         </div>
       </div>
 
-      <div className="w">
+      <div className="mnw-90">
         {alerts.length ? (
           <List>
 
             {filteredAlerts.map(alert => (
 
               <ListItem className="" key={alert._id}>
-                <div className="d-flex justify-content-between align-items-center">
+                <div className="d-flex  justify-content-between align-items-center">
 
                   <Link to={"/alerts/" + alert._id}>
-                    <div className={alert.line+" p-3 rounded"}>{'\u00A0 \u00A0 \u00A0'}</div>
+                    <div className={alert.line + " p-3 rounded"}>{'\u00A0 \u00A0 \u00A0'}</div>
                   </Link>
 
                   <div className="d-flex flex-column align-items-center ">
                     <Link to={"/alerts/" + alert._id}>
                       {/* Details */}
-                      {alert.description}
+                      <div className="w-desc">{alert.description} </div>
                     </Link>
 
                     <div className="d-flex align-items-center justify-items-center">
@@ -258,16 +258,16 @@ function Alerts() {
 
             ))}
           </List>
-          ):(
-              <>
-                <div class="loader">
-                  <span className="cube"></span>
-                  {/* <span className="cube"></span> */}
-                  {/* <span className="cube"></span> */}
-                  {/* <span className="cube"></span> */}
-                </div>
-              </>
-            )}
+        ) : (
+            <>
+              <div className="loader">
+                <span className="cube"></span>
+                {/* <span className="cube"></span> */}
+                {/* <span className="cube"></span> */}
+                {/* <span className="cube"></span> */}
+              </div>
+            </>
+          )}
       </div>
     </div>
   );

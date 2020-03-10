@@ -13,8 +13,8 @@
     180deg,
     rgba(73, 47, 146),
     rgba(73, 47, 146) .5vw,
-    rgba(255,255,255) .5vw,
-    rgba(255,255,255) 1vw);
+    rgba(238, 232, 255) .5vw,
+    rgba(238, 232, 255) 1vw);
     height: 100%;
     width: inherit;
 }
@@ -25,6 +25,12 @@
 .Significant {background: linear-gradient(to left, rgba(255, 123, 0, 0.767), rgba(255,255,255));}
 .Disruption {background: linear-gradient(to left, rgba(255, 0, 0, 0.767), rgba(255,255,255));}
 
-.w {
+.mnw-90 {
     min-width: 90vw;
+}
+
+.w-desc{
+    max-width: 75%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
