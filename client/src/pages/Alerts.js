@@ -44,7 +44,7 @@ function Alerts() {
       }).catch(err => console.log(err));
   };
 
-  function filterLine(color) {
+  function filterLine(color, sortFunction) {
     if (color === "") {
       return setFilteredAlerts(alerts);
     } else {
@@ -53,6 +53,7 @@ function Alerts() {
       });
       setFilteredAlerts(filter);
     };
+    sorting(sortFunction);
   };
 
   function sorting(sortFunction) {
@@ -187,7 +188,7 @@ function Alerts() {
       <div className="m-auto d-flex">
         <div className="m-4 d-flex flex-column">
           <h3 className="text-muted"><i>Filter by Line</i></h3>
-          <select className="h-auto m-auto display-4" id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value)}>
+          <select className="h-auto m-auto display-4" id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value, document.getElementById("sort").value)}>
             <option className="lead" id="all" value="">All Lines</option>
             <option className="lead" id="Red" data-val="Red">Red</option>
             <option className="lead" id="Blue" data-val="Blue">Blue</option>
