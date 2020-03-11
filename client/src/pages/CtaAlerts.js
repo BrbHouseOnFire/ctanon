@@ -7,6 +7,7 @@ import Axios from "axios";
 // import { List, ListItem } from "../components/List";
 // import { ColorInput, CategoryInput, Input, TextArea, FormBtn, FilterTrains } from "../components/Form";
 import "../assets/css/loader.css";
+import "../assets/css/sizing.css";
 
 let ctaRoutes = [];
 
@@ -43,7 +44,7 @@ function ctaAlerts() {
   return (
     <div className="d-flex flex-column align-items-center">
         <div>
-          <h1 className="display-1">CTA Status Alerts</h1>
+          <h1 className="display-1 sizeH">CTA Status Alerts</h1>
         </div>
           {ctaAlerts.length ? (
               ctaAlerts.map(ctaRoute => (
