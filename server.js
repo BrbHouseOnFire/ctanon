@@ -17,15 +17,15 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/ctanondb");
-// mongoose.connect(
-//   process.env.MONGODB_URI ||
-//     'mongodb://hostuser:hostuser1@ds163517.mlab.com:63517/heroku_xr954v2q',
-//   {
-//     useNewUrlParser: true,
-//     useFindAndModify: false
-//   }
-// );
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/ctanondb");
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    'mongodb://hostuser:hostuser1@ds163517.mlab.com:63517/heroku_xr954v2q',
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false
+  }
+);
 
 
 // Start the API server
