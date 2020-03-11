@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from "react";
-import DeleteBtn from "../components/DeleteBtn";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+// import DeleteBtn from "../components/DeleteBtn";
+// import { Link } from "react-router-dom";
+// import { Col, Row, Container } from "../components/Grid";
 import Axios from "axios";
-import { List, ListItem } from "../components/List";
-import { ColorInput, CategoryInput, Input, TextArea, FormBtn, FilterTrains } from "../components/Form";
+// import { List, ListItem } from "../components/List";
+// import { ColorInput, CategoryInput, Input, TextArea, FormBtn, FilterTrains } from "../components/Form";
 import "../assets/css/loader.css";
 
 let ctaRoutes = [];

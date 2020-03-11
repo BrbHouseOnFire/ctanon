@@ -1,10 +1,7 @@
 import React from "react";
 import "./style.css";
-import API from "../../utils/API";
+// import API from "../../utils/API";
 
-
-function upvote() {
-}
 
 // we need the on click functions to add +1 and pass this to the database to the votes table
 export function VoteUp(props) {
