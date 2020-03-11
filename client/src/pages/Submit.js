@@ -1,15 +1,15 @@
 
-import React, { useState, useEffect } from "react";
-import DeleteBtn from "../components/DeleteBtn";
+import React, { useState } from "react";
+// import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { ColorInput, CategoryInput, Input, TextArea, FormBtn, FilterTrains } from "../components/Form";
+// import { Link } from "react-router-dom";
+// import { Col, Row, Container } from "../components/Grid";
+// import { List, ListItem } from "../components/List";
+import { ColorInput, CategoryInput, TextArea, FormBtn, FilterTrains } from "../components/Form";
 
 function Submit() {
   // Setting our component's initial state
-  const [alerts, setAlerts] = useState([])
+  // const [alerts, setAlerts] = useState([])
   const [line, setLine] = useState('');
   const [category, setCategory] = useState('');
   const [desc, setDesc] = useState('');

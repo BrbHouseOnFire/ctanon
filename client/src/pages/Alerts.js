@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+// import { Col, Row, Container } from "../components/Grid";
 import { VoteUp, VoteDn, Clear } from "../components/Thumbs"
 import { List, ListItem } from "../components/List";
 import "../assets/css/loader.css";
@@ -276,10 +276,10 @@ function Alerts() {
   );
 }
 
+{/* delete col, maybe for later */ }
+{/* <Col classInfo="">
+<DeleteBtn onClick={() => deleteAlert(alert._id)} />
+</Col> */}
 
 export default Alerts;
 
-{/* delete col, maybe for later */ }
-{/* <Col classInfo="">
-                        <DeleteBtn onClick={() => deleteAlert(alert._id)} />
-                      </Col> */}
