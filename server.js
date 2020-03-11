@@ -4,13 +4,12 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const compression = require("compression");
 const path = require('path');
-const cors = require('cors');
+// const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(logger("dev"));
 // Define middleware here
-app.use(cors());
+// app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(compression());
@@ -25,6 +24,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 // Add routes, both API and view
+app.use(logger("dev"));
 app.use(routes);
 
 // Connect to the Mongo DB
