@@ -1,7 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const routes = require("./server/routes");
+const routes = require("./routes");
 const compression = require("compression");
 const path = require('path');
 // const cors = require('cors');
