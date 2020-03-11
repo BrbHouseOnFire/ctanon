@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { VoteUp, VoteDn, Clear } from "../components/Thumbs"
 import { List, ListItem } from "../components/List";
 import "../assets/css/loader.css";
+import "../assets/css/sizing.css";
 
 
 // import { ColorInput, CategoryInput, Input, TextArea, FormBtn } from "../components/Form";
@@ -186,11 +187,11 @@ function Alerts() {
       {alerts.length ? (
         <>
           <div className="d-flex flex-column align-items-center m-auto w w-75">
-            <h1 className="display-4 m-5 mb-5">Check out what's going on...</h1>
+            <h1 className="display-4 sizeH">Check out what's going on...</h1>
             <div className="m-auto d-flex">
-              <div className="m-4 d-flex flex-column">
-                <h3 className="text-muted"><i>Filter by Line</i></h3>
-                <select className="h-auto m-auto display-4" id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value, document.getElementById("sort").value)}>
+              <div className="m-1 d-flex flex-column">
+                <h3 className="text-muted sizeFS"><i>Filter by Line</i></h3>
+                <select className="h-auto m-auto sizeB" id="lineFilter" onChange={() => filterLine(document.getElementById("lineFilter").value, document.getElementById("sort").value)}>
                   <option className="lead" id="all" value="">All Lines</option>
                   <option className="lead" id="Red" data-val="Red">Red</option>
                   <option className="lead" id="Blue" data-val="Blue">Blue</option>
@@ -203,9 +204,9 @@ function Alerts() {
                   <option className="lead" id="Y" data-val="Y">Yellow</option>
                 </select>
               </div>
-              <div className=" m-4 d-flex flex-column">
-                <h3 className=" text-muted"><i>Order By</i></h3>
-                <select className=" m-5 h-auto m-auto display-4" id="sort" onChange={() => sorting(document.getElementById("sort").value)}>
+              <div className=" m-1 d-flex flex-column">
+                <h3 className=" text-muted sizeFS"><i>Order By</i></h3>
+                <select className=" m-5 h-auto m-auto sizeB" id="sort" onChange={() => sorting(document.getElementById("sort").value)}>
                   <option className=" lead" data-val="mostRecent">Most Recent</option>
                   <option className=" lead" data-val="hiRated">Highest Rated</option>
                 </select>
