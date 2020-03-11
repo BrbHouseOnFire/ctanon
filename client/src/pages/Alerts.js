@@ -67,7 +67,7 @@ function Alerts() {
     } else if (sortFunction === "Most Recent") {
 
       filteredAlerts.sort(function (a, b) {
-        return parseFloat(a.dateTime) - parseFloat(b.dateTime);
+        return parseFloat(b.dateTime) - parseFloat(a.dateTime);
       })
       let newDate = [...filteredAlerts]
       setFilteredAlerts(newDate);
