@@ -34,46 +34,73 @@ function Alerts() {
             less.push(all[i]);
           }
         }
-        // filteredAlerts = [...less];
-        // let change = [...less];
-        // let newDate = [...filteredAlerts]
-        // setFilteredAlerts(newDate);
-        // let change = [...filteredAlerts];
         setAlerts(less);
         setFilteredAlerts(less);
       }).catch(err => console.log(err));
   };
 
   function filterLine(color, sortFunction) {
+    // depracated function. Updated in new function:
+    filterAndSort(color, sortFunction);
+  };
+
+  function filterAndSort(color, sortFunction) {
     if (color === "") {
-      return setFilteredAlerts(alerts);
-    } else {
+      // no color selection: sort all alerts
+      if (sortFunction === "Highest Rated") {
+        alerts.sort(function (a, b) {
+          return parseFloat(b.votes) - parseFloat(a.votes);
+        });
+        let hiRating = [...alerts];
+        setFilteredAlerts(hiRating);
+      } 
+      else if (sortFunction === "Most Recent") {
+        alerts.sort(function (a, b) {
+          return parseFloat(a.dateTime) - parseFloat(b.dateTime);
+        })
+        let newDate = [...alerts]
+        setFilteredAlerts(newDate);
+      }
+    }
+
+
+    else {
+      // filter on color, then sort
       let filter = alerts.filter(function (res) {
         return res.line === color;
       });
-      setFilteredAlerts(filter);
+      if (sortFunction === "Highest Rated") {
+        filter.sort(function (a, b) {
+          return parseFloat(b.votes) - parseFloat(a.votes);
+        });
+        let hiRating = [...filter];
+        setFilteredAlerts(hiRating);
+      } 
+      else if (sortFunction === "Most Recent") {
+        filter.sort(function (a, b) {
+          return parseFloat(a.dateTime) - parseFloat(b.dateTime);
+        })
+        let newDate = [...filter]
+        setFilteredAlerts(newDate);
+      }
     };
-    sorting(sortFunction);
-  };
+  }
 
   function sorting(sortFunction) {
     if (sortFunction === "Highest Rated") {
-
       filteredAlerts.sort(function (a, b) {
         return parseFloat(b.votes) - parseFloat(a.votes);
       });
       let hiRating = [...filteredAlerts];
       setFilteredAlerts(hiRating);
-
-    } else if (sortFunction === "Most Recent") {
-
+    } 
+    else if (sortFunction === "Most Recent") {
       filteredAlerts.sort(function (a, b) {
         return parseFloat(a.dateTime) - parseFloat(b.dateTime);
       })
       let newDate = [...filteredAlerts]
       setFilteredAlerts(newDate);
     }
-
   }
 
 
