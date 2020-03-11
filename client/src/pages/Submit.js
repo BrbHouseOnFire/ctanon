@@ -6,6 +6,7 @@ import API from "../utils/API";
 // import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
 import { ColorInput, CategoryInput, TextArea, FormBtn, FilterTrains } from "../components/Form";
+import "../assets/css/sizing.css";
 
 function Submit() {
   // Setting our component's initial state
@@ -90,7 +91,7 @@ function Submit() {
   return (
 
     <div className="d-flex flex-column align-items-center justify-content-center">
-      <h1 className="display-4 m-4">Tell Chicago what's happening.</h1>
+      <h1 className="display-4 sizeH">Tell Chicago what's happening.</h1>
 
       <form>
         <div className="d-flex">
