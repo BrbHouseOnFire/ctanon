@@ -270,10 +270,10 @@ function Alerts() {
   );
 }
 
-{/* delete col, maybe for later */ }
-{/* <Col classInfo="">
-<DeleteBtn onClick={() => deleteAlert(alert._id)} />
-</Col> */}
+// {/* delete col, maybe for later */ }
+// {/* <Col classInfo="">
+// <DeleteBtn onClick={() => deleteAlert(alert._id)} />
+// </Col> */}
 
 export default Alerts;
 
