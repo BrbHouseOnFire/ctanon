@@ -42,11 +42,14 @@
     white-space: normal;
 }
 .descSize {
-    font-size: 3.75vw;
+    font-size: calc(1vw + 2vh);
     overflow: hidden;
     max-width: 70vw;
     text-overflow: ellipsis;
 }
 .descTextSize {
-    font-size: 3vw;
+    font-size: calc(1vw + 1.75vh);
+}
+.cardStat {
+    margin-right: calc(1vw + 1.75vh);
 }
