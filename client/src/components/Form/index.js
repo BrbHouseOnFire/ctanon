@@ -61,7 +61,6 @@ export function CategoryInput(props) {
       <option className="" id="" data-val="delayTrain">Delayed Train</option>
       <option className="" id="" data-val="passInc">Passenger Incident</option>
       <option className="" id="" data-val="polAct">Police Activity</option>
-      <option className="" id="" data-val="John Wayne Gacy's Ghost">John Wayne Gacy's Ghost</option>
       <option className="" id="" data-val="Other">Other</option>
     </select>
   );
