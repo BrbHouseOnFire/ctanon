@@ -1,13 +1,52 @@
 .sizeH {
-    font-size: 5vw;
-    margin: 3vh 5vw;
+    font-size: 7vw;
+    margin: 1.5vh 5vw;
 }
 .sizeFS {
-    font-size: 2.5vw;
+    font-size: 3vw;
 }
 .sizeB {
     font-size: 3vw;
+    border: none;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 0.5vw;
 }
-
-
-
+.flex {
+    display: flex;
+}
+.column {
+    flex-direction: column;
+}
+.wsNormal {
+    white-space: normal;
+}
+.listItemSize {
+    padding: 0;
+    border: none;
+    border-top: 1px solid rgb(194, 194, 194);
+    border-bottom: 1px solid rgb(194, 194, 194);
+    white-space: normal;
+}
+.holder {
+    display: flex;
+}
+.cardContainer {
+    width: 95vw;
+}
+.cardStats {
+    flex-wrap: wrap;
+}
+.indCard {
+    /* width: 85vw; */
+    justify-content: space-between;
+    white-space: normal;
+}
+.descSize {
+    font-size: 3.75vw;
+    overflow: hidden;
+    max-width: 70vw;
+    text-overflow: ellipsis;
+}
+.descTextSize {
+    font-size: 3vw;
+}
