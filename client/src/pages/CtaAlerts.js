@@ -24,7 +24,7 @@ function ctaAlerts() {
 
   // Loads all alerts and sets them to alerts
   function loadCtaAlerts() {
-    Axios.get('http://www.transitchicago.com/api/1.0/routes.aspx?outputType=JSON')
+    Axios.get('https://www.transitchicago.com/api/1.0/routes.aspx?outputType=JSON')
       .then(res => {
         // console.log(res.data.CTARoutes.RouteInfo)
         let ctaData = res.data.CTARoutes.RouteInfo.slice([0], [9]);
