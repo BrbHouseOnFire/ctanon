@@ -35,8 +35,12 @@ function Alerts() {
             less.push(all[i]);
           }
         }
-        setAlerts(less);
-        setFilteredAlerts(less);
+        less.sort(function (a, b) {
+          return parseFloat(a.dateTime) - parseFloat(b.dateTime);
+        })
+        let newDate = [...less]
+        setAlerts(newDate);
+        setFilteredAlerts(newDate);
       }).catch(err => console.log(err));
   };
 
