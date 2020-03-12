@@ -27,8 +27,9 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 
-// Connect to the Mongo DB
+// Connect to the Mongo DB Locally
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/ctanondb");
+// Connect to the Mongo DB Deployed
 mongoose.connect(
   process.env.MONGODB_URI ||
     'mongodb://hostuser:hostuser1@ds163517.mlab.com:63517/heroku_xr954v2q',
