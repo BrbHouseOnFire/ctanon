@@ -186,7 +186,7 @@ function Alerts() {
     <>
       {alerts.length ? (
         <>
-          <div className="d-flex flex-column align-items-center m-auto w w-75">
+          <div className="d-flex flex-column align-items-center m-auto w">
             <h1 className="display-4 sizeH">Check out what's going on...</h1>
             <div className="m-auto d-flex">
               <div className="m-1 d-flex flex-column">
@@ -212,38 +212,40 @@ function Alerts() {
                 </select>
               </div>
             </div>
-            <div className="mnw-90">
+            <div className="mnw-100 cardContainer">
               <List>
                 {filteredAlerts.map(alert => (
                   <ListItem className="" key={alert._id}>
-                    <div className=" d-flex justify-content-start align-items-center m-1">
-                      <Link to={"/alerts/" + alert._id} title="See Full Alert">
-                        <div className={alert.line + " p-3 rounded"}>{'\u00A0 \u00A0 \u00A0'}</div>
-                      </Link>
-                      <div className=" d-flex flex-column align-items-start ">
-                        <Link to={"/alerts/" + alert._id} className="w-desc p-3 lead" title="See Full Alert">
-                          {alert.description}
+                    <div className=" flex align-items-center m-1 indCard">
+                      <div className="holder align-items-center">
+                        <Link to={"/alerts/" + alert._id} title="See Full Alert">
+                          <div className={alert.line + " p-3 rounded"}>{'\u00A0 \u00A0 \u00A0'}</div>
                         </Link>
-                        <div className=" d-flex align-items-center justify-items-center pl-3">
-                          <div >
-                            {/* Score */}
-                            {`Score: ${alert.votes}`}
-                          </div>
-                          <div className=" ml-4 mr-4">
-                            {/* Clears */}
-                            <img alt="" src={require('./../assets/images/ctanonImages/stale.png')} title="# of Users Who Marked This Alert as Stale" />
-                            {`x${alert.cleared}`}
-                          </div>
-                          <div >
-                            {/* post time */}
-                            <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
-                            {moment(alert.dateTime, "YYYYMMDDHHmmss").fromNow()}
+                        <div className=" flex column wsNormal pl-1 align-items-start ">
+                          <Link to={"/alerts/" + alert._id} className=" p-1 descSize" title="See Full Alert">
+                            {alert.description}
+                          </Link>
+                          <div className=" flex align-items-center justify-items-center pl-2 descTextSize cardStats">
+                            <div className="">
+                              {/* Score */}
+                              {`Score: ${alert.votes}`}
+                            </div>
+                            <div className=" ml-2 mr-2 descTextSize">
+                              {/* Clears */}
+                              {/* <img alt="" src={require('./../assets/images/ctanonImages/stale.png')} title="# of Users Who Marked This Alert as Stale" /> */}
+                              <Clear onClick={() => clear(alert)} />
+                              {`x${alert.cleared}`}
+                            </div>
+                            <div >
+                              {/* post time */}
+                              <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
+                              {moment(alert.dateTime, "YYYYMMDDHHmmss").fromNow()}
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div className=" ml-auto d-flex flex-column justify-content-center align-items-center">
+                      <div className=" ml-auto flex column justify-content-center align-items-center">
                         <VoteUp onClick={() => upvote(alert)} />
-                        <Clear onClick={() => clear(alert)} />
                         <VoteDn onClick={() => downvote(alert)} />
                       </div>
                     </div>

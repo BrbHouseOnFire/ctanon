@@ -35,7 +35,7 @@ export function Clear(props) {
       alt=""
       className="cl "
       src={require('./../../assets/images/ctanonImages/stale.png')}
-      title="Mark This Alert as Stale"
+      title="Mark this Alert as Stale"
     />
   );
 }
