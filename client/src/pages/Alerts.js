@@ -226,17 +226,17 @@ function Alerts() {
                             {alert.description}
                           </Link>
                           <div className=" flex align-items-center justify-items-center pl-2 descTextSize cardStats">
-                            <div className="">
+                            <div className="cardStat">
                               {/* Score */}
                               {`Score: ${alert.votes}`}
                             </div>
-                            <div className=" ml-2 mr-2 descTextSize">
+                            <div className="descTextSize cardStat">
                               {/* Clears */}
                               {/* <img alt="" src={require('./../assets/images/ctanonImages/stale.png')} title="# of Users Who Marked This Alert as Stale" /> */}
                               <Clear onClick={() => clear(alert)} />
                               {`x${alert.cleared}`}
                             </div>
-                            <div >
+                            <div className="cardStat">
                               {/* post time */}
                               <img alt="" src={require('./../assets/images/ctanonImages/pst.png')} ></img>
                               {moment(alert.dateTime, "YYYYMMDDHHmmss").fromNow()}
