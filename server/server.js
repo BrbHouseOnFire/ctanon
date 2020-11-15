@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const compression = require("compression");
 const path = require('path');
+const config = require('../config/config.json');
 // const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -28,17 +29,17 @@ app.get('*', (req, res) => {
 });
 
 // Connect to the Mongo DB Locally
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/ctanondb");
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/ctanondb");
 // Connect to the Mongo DB Deployed
-// mongoose.connect(
-//   process.env.MONGODB_URI ||
-//     'mongodb://hostuser:hostuser1@ds163517.mlab.com:63517/heroku_xr954v2q',
-//     'mongodb+srv://<username>:<password>@cluster-q10l61qb.jow8h.mongodb.net/heroku_q10l61qb?retryWrites=true&w=majority',
-//   {
-//     useNewUrlParser: true,
-//     useFindAndModify: false
-//   }
-// );
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    // 'mongodb://hostuser:hostuser1@ds163517.mlab.com:63517/heroku_xr954v2q',
+    `mongodb+srv://<${config.user}>:<${config.pass}>@cluster-q10l61qb.jow8h.mongodb.net/heroku_q10l61qb?retryWrites=true&w=majority`,
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false
+  }
+);
 
 
 // Start the API server
