@@ -34,9 +34,8 @@ app.get('*', (req, res) => {
 mongoose.connect(
   process.env.MONGODB_URI ||
     // 'mongodb://hostuser:hostuser1@ds163517.mlab.com:63517/heroku_xr954v2q',
-    `mongodb+srv://${config.user}:${config.pass}@cluster-q10l61qb.jow8h.mongodb.net/heroku_q10l61qb?retryWrites=true&w=majority`,
-    // `mongodb+srv://<hostuser>:<hostuser1>@cluster-q10l61qb.jow8h.mongodb.net/heroku_q10l61qb?retryWrites=true&w=majority`,
-    
+    // `mongodb+srv://${config.user}:${config.pass}@cluster-q10l61qb.jow8h.mongodb.net/heroku_q10l61qb?retryWrites=true&w=majority`,
+    'mongodb+srv://hostuser:hostuser1@cluster-q10l61qb.jow8h.mongodb.net/heroku_q10l61qb?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     useFindAndModify: false
