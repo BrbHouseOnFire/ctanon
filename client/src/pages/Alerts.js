@@ -18,10 +18,14 @@ function Alerts() {
   // Setting our component's initial state
   const [alerts, setAlerts] = useState([])
   const [filteredAlerts, setFilteredAlerts] = useState([])
+  // const [test, setTest] = useState([]);
 
   // Load all alerts and store them with setAlerts
   useEffect(() => {
-    loadAlerts()
+    // console.log("state testing: ");
+    // setTest({myVal: 'hello'});
+    // console.log(test.myVal);
+    loadAlerts();
   }, [])
 
   // Loads all alerts and sets them to alerts
@@ -42,11 +46,19 @@ function Alerts() {
         setAlerts(newDate);
         setFilteredAlerts(newDate);
       }).catch(err => console.log(err));
+      
+    // console.log("state testing 2: ");
+    // console.log(test.myVal);
   };
 
   function filterLine(color, sortFunction) {
     // depracated function. Updated in new function:
     filterAndSort(color, sortFunction);
+    // console.log("state testing 3: ");
+    // console.log(test.myVal);
+    // setTest({myVal: 'yellow'});
+    // console.log("state testing 4: ");
+    // console.log(test.myVal);
   };
 
   function filterAndSort(color, sortFunction) {
